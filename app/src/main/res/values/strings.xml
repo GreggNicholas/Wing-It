@@ -8,4 +8,6 @@
     <string name="restaurant_picture">picture of restaurant</string>
     <string name="i_am_the_restaurant_name">I am the restaurant name</string>
     <string name="detailedfragment_deliverytoggle">Image lights up if delivery is available</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
 </resources>

@@ -5,6 +5,7 @@ import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.widget.ToggleButton;
 
 import com.example.wing_it.model.Restaurant;
 import com.example.wing_it.model.RestaurantModel;
@@ -27,8 +28,10 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
+        drawerToggle = new ActionBarDrawerToggle(this, drawerlayout,R.string.open,R.string.close);
         drawerlayout = findViewById(R.id.drawer);
+        drawerToggle.syncState();
+        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         RestaurantSingleton.getInstance()
                 .create(RestaurantService.class)
