@@ -1,12 +1,13 @@
 package com.example.wing_it.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RestaurantModel {
     private String results_found;
     private String results_start;
     private String results_shown;
-    private List<Restaurant> restaurants = null;
+    private List<Restaurant> restaurants=new ArrayList<>();
 
     public String getResults_found() {
         return results_found;
@@ -31,6 +32,7 @@ public class RestaurantModel {
     public void setResults_shown(String results_shown) {
         this.results_shown = results_shown;
     }
+
 
     public List<Restaurant> getRestaurants() {
         return restaurants;

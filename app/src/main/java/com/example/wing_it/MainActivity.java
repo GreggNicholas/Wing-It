@@ -28,6 +28,7 @@ public class MainActivity extends AppCompatActivity {
                     @Override
                     public void onResponse(Call<RestaurantModel> call, Response<RestaurantModel> response) {
                         Log.d(TAG, "onResponse: "+response.body().getResults_found());
+                        Log.d(TAG, "onResponse: "+response.body().getRestaurants().get(0).getName());
                     }
 
                     @Override
