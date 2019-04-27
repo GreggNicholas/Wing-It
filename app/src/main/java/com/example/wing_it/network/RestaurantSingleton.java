@@ -10,7 +10,6 @@ public class RestaurantSingleton {
 
     public static Retrofit getInstance(){
         if (instance == null){
-
             instance = new Retrofit.Builder()
                     .baseUrl("https://developers.zomato.com/api/v2.1/")
                     .addConverterFactory(GsonConverterFactory.create())

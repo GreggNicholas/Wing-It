@@ -26,13 +26,12 @@ public class MainActivity extends AppCompatActivity {
 
         RestaurantSingleton.getInstance()
                 .create(RestaurantService.class)
-                .getRestaurants("40.7590", "73.9845")
+                .getRestaurants(40.7590, 73.9845, 2000,15)
                 .enqueue(new Callback<RestaurantModel>() {
                     @Override
                     public void onResponse(Call<RestaurantModel> call, Response<RestaurantModel> response) {
-                        Log.d(TAG, "onResponse: "+response.body().getRestaurants().get(0).getRestaurant().getName());
+                        Log.d(TAG, "onResponse: "+response.body().getResults_shown());
                     }
-
                     @Override
                     public void onFailure(Call<RestaurantModel> call, Throwable t) {
                         Log.d(TAG, "onFailure: "+t.getMessage());
