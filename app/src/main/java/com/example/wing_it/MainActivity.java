@@ -1,5 +1,7 @@
 package com.example.wing_it;
 
+import android.support.v4.widget.DrawerLayout;
+import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -18,11 +20,15 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity {
 
     public static final String TAG = "FINDME";
+    private DrawerLayout drawerlayout;
+    private ActionBarDrawerToggle drawerToggle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        drawerlayout = findViewById(R.id.drawer);
 
         RestaurantSingleton.getInstance()
                 .create(RestaurantService.class)

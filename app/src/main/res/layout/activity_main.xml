@@ -20,8 +20,8 @@
     <android.support.design.widget.NavigationView
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-
         app:menu= "@menu/nav_menu"
+        android:foregroundGravity="left"
 
         >
 
