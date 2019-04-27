@@ -1,31 +1,40 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
-xmlns:app="http://schemas.android.com/apk/res-auto"
-xmlns:tools="http://schemas.android.com/tools"
-android:layout_width="match_parent"
-android:layout_height="match_parent"
-tools:context=".Fragment.DetailedFragment">
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    style="@style/style_detailedfragment"
+    tools:context=".Fragment.DetailedFragment">
 
-<TextView
-    android:id="@+id/detailedfragment_restaurantname"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:text="@string/hello_blank_fragment"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="parent" />
+    <TextView
+        android:id="@+id/detailedfragment_restaurantname"
+        android:layout_width="462dp"
+        android:layout_height="108dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginTop="168dp"
+        android:text="@string/i_am_the_restaurant_name"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-<ImageView
-    android:id="@+id/detailedfragment_restaurantpicture"
-    android:layout_width="wrap_content"
-    android:layout_height="wrap_content"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/detailedfragment_restaurantname" />
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        android:contentDescription="@string/restaurant_picture"
+        app:layout_constraintBottom_toTopOf="@+id/detailedfragment_restaurantaddress"
+        app:layout_constraintTop_toBottomOf="@+id/detailedfragment_restaurantname"
+        tools:layout_editor_absoluteX="160dp"
+        tools:src="@tools:sample/avatars" />
 
-<TextView
-    android:id="@+id/detailedfragment_restaurantaddress"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toBottomOf="@id/detailedfragment_restaurantpicture" />
+    <TextView
+        android:id="@+id/detailedfragment_restaurantaddress"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="124dp"
+        android:text="@string/hello_blank_fragment"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
 
 </android.support.constraint.ConstraintLayout>
