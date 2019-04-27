@@ -6,7 +6,7 @@ public class RestaurantModel {
     private String results_found;
     private String results_start;
     private String results_shown;
-    private List<Restaurant> restaurants = null;
+    private List<Restaurant> restaurants;
 
     public String getResults_found() {
         return results_found;
