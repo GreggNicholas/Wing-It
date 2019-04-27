@@ -10,6 +10,7 @@ import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
+import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.wing_it.network.RestaurantService;
@@ -23,12 +24,16 @@ public class SplashActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+
         ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
         if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
             LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
             Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
              longitude = location.getLongitude();
              latitude = location.getLatitude();
+        }
+        else {
+            Toast.makeText(this, "You need internet to use this app", Toast.LENGTH_LONG).show();
         }
 
 
@@ -37,7 +42,7 @@ public class SplashActivity extends AppCompatActivity {
 //                .getRestaurants()
 
         ImageView imageView = findViewById(R.id.splash_gif);
-      Glide.with(this)
+        Glide.with(this)
                 .load(R.drawable.transparentchickenglitter2)
                 .placeholder(R.drawable.transparentchickenglitter2)
                 .into(imageView);
