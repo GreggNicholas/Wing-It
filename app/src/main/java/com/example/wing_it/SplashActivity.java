@@ -4,6 +4,8 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.widget.ImageView;
 
+import com.bumptech.glide.Glide;
+
 public class SplashActivity extends AppCompatActivity {
 
     @Override
@@ -11,6 +13,10 @@ public class SplashActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
         ImageView imageView = findViewById(R.id.splash_gif);
-        Glide
+        Glide.with(this)
+                .load(R.drawable.transparentchickenglitter2)
+                .placeholder(R.drawable.transparentchickenglitter2)
+                .into(imageView);
+
     }
 }

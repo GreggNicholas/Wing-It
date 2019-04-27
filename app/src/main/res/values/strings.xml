@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Wing-It</string>
+    <string name="chicken_gif">https://ui-ex.com/images/transparent-chicken-glitter-2.gif</string>
+    <string name="splash_title">WING IT!</string>
 </resources>

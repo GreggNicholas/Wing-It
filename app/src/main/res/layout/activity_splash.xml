@@ -15,6 +15,20 @@
       android:layout_width="match_parent"
       android:layout_height="match_parent" />
 
+  <TextView
+      android:layout_width="match_parent"
+      android:layout_height="wrap_content"
+      android:fontFamily="@font/orange_juice_2_"
+      android:text="@string/splash_title"
+      android:textStyle="bold"
+      android:textAlignment="center"
+      android:textSize="56sp"
+      android:textColor="@color/colorYellowAccent"
+      app:layout_constraintBottom_toBottomOf="parent"
+      app:layout_constraintTop_toTopOf="parent"
+      app:layout_constraintStart_toStartOf="parent"
+      app:layout_constraintEnd_toEndOf="parent"/>
+
 
 
 </android.support.constraint.ConstraintLayout>
