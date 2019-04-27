@@ -1,10 +1,13 @@
 package com.example.wing_it;
 
+import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.TextView;
 import android.widget.ToggleButton;
 
 import com.example.wing_it.model.Restaurant;
@@ -23,6 +26,10 @@ public class MainActivity extends AppCompatActivity {
     public static final String TAG = "FINDME";
     private DrawerLayout drawerlayout;
     private ActionBarDrawerToggle drawerToggle;
+    private NavigationView navigationView;
+    View headerView;
+    TextView textView;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +39,12 @@ public class MainActivity extends AppCompatActivity {
         drawerlayout = findViewById(R.id.drawer);
         drawerToggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
+        navigationView = findViewById(R.id.navigation_drawer);
+        headerView = navigationView.getHeaderView(0);
+        textView.findViewById(R.id.wing_it_title_nav);
+
+
+
 
         RestaurantSingleton.getInstance()
                 .create(RestaurantService.class)
