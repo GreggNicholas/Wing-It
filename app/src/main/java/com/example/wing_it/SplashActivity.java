@@ -1,5 +1,6 @@
 package com.example.wing_it;
 
+
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
@@ -8,7 +9,9 @@ import android.location.Location;
 import android.location.LocationManager;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
+
 import android.os.Bundle;
+import android.support.v7.app.AppCompatActivity;
 import android.widget.ImageView;
 
 import com.bumptech.glide.Glide;
@@ -41,5 +44,9 @@ public class SplashActivity extends AppCompatActivity {
                 .load(R.drawable.transparentchickenglitter2)
                 .placeholder(R.drawable.transparentchickenglitter2)
                 .into(imageView);
+
+      getSupportActionBar().hide();
+
+
     }
 }
