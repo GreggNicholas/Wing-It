@@ -17,8 +17,13 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".MainActivity"></activity>
+<<<<<<< HEAD
+        <activity android:name=".SplashActivity"
+            android:theme="@android:style/Theme.NoTitleBar.Fullscreen">
+=======
         <activity android:name=".SplashActivity">
 
+>>>>>>> c87649124a4f84090fc724fd6971d98fd45d588a
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

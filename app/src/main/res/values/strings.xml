@@ -1,8 +1,13 @@
 <resources>
     <string name="app_name">Wing-It</string>
+<<<<<<< HEAD
+    <string name="chicken_gif">https://ui-ex.com/images/transparent-chicken-glitter-2.gif</string>
+    <string name="splash_title">WING IT!</string>
+=======
 
     <!-- TODO: Remove or change this placeholder text -->
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="restaurant_picture">picture of restaurant</string>
     <string name="i_am_the_restaurant_name">I am the restaurant name</string>
+>>>>>>> c87649124a4f84090fc724fd6971d98fd45d588a
 </resources>
