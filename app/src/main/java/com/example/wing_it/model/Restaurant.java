@@ -6,6 +6,9 @@ import com.google.gson.annotations.SerializedName;
 import java.util.List;
 
 public class Restaurant {
+    @SerializedName("all_reviews")
+    @Expose
+    private AllReview allReview;
     @SerializedName("apikey")
     @Expose
     private String apikey;
@@ -90,6 +93,9 @@ public class Restaurant {
     @SerializedName("events_url")
     @Expose
     private String eventsUrl;
+    @SerializedName("phone_numbers")
+    @Expose
+    private String phoneNumbers;
 
     public String getApikey() {
         return apikey;
@@ -313,5 +319,13 @@ public class Restaurant {
 
     public void setEventsUrl(String eventsUrl) {
         this.eventsUrl = eventsUrl;
+    }
+
+    public String getPhoneNumbers() {
+        return phoneNumbers;
+    }
+
+    public AllReview getAllReview() {
+        return allReview;
     }
 }
