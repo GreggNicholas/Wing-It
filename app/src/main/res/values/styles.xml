@@ -18,9 +18,11 @@
 
     </style>
 
-    <style name="style_detailedfragment" parent="Theme.AppCompat.DayNight.DarkActionBar">
+    <style name="style_detailedfragment">
+
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">match_parent</item>
     </style>
+
 
 </resources>
