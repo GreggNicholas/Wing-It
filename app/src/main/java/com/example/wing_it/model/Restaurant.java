@@ -1,25 +1,103 @@
 package com.example.wing_it.model;
 
+import com.google.gson.annotations.Expose;
+import com.google.gson.annotations.SerializedName;
+
 import java.util.List;
 
 public class Restaurant {
+    @SerializedName("apikey")
+    @Expose
+    private String apikey;
+    @SerializedName("id")
+    @Expose
     private String id;
+    @SerializedName("name")
+    @Expose
     private String name;
+    @SerializedName("url")
+    @Expose
     private String url;
+    @SerializedName("location")
+    @Expose
     private Location location;
-    private String average_cost_for_two;
-    private String price_range;
-    private String currency;
-    private String thumb;
-    private String menu_url;
-    private String has_online_delivery;
-    private String is_delivering_now;
-    private String has_table_booking;
-    private String deeplink;
+    @SerializedName("switch_to_order_menu")
+    @Expose
+    private Integer switchToOrderMenu;
+    @SerializedName("cuisines")
+    @Expose
     private String cuisines;
-    private String all_reviews_count;
-    private String photo_count;
-    private String phone_numbers;
+    @SerializedName("average_cost_for_two")
+    @Expose
+    private Integer averageCostForTwo;
+    @SerializedName("price_range")
+    @Expose
+    private Integer priceRange;
+    @SerializedName("currency")
+    @Expose
+    private String currency;
+    @SerializedName("opentable_support")
+    @Expose
+    private Integer opentableSupport;
+    @SerializedName("is_zomato_book_res")
+    @Expose
+    private Integer isZomatoBookRes;
+    @SerializedName("mezzo_provider")
+    @Expose
+    private String mezzoProvider;
+    @SerializedName("is_book_form_web_view")
+    @Expose
+    private Integer isBookFormWebView;
+    @SerializedName("book_form_web_view_url")
+    @Expose
+    private String bookFormWebViewUrl;
+    @SerializedName("book_again_url")
+    @Expose
+    private String bookAgainUrl;
+    @SerializedName("thumb")
+    @Expose
+    private String thumb;
+    @SerializedName("photos_url")
+    @Expose
+    private String photosUrl;
+    @SerializedName("menu_url")
+    @Expose
+    private String menuUrl;
+    @SerializedName("featured_image")
+    @Expose
+    private String featuredImage;
+    @SerializedName("has_online_delivery")
+    @Expose
+    private Integer hasOnlineDelivery;
+    @SerializedName("is_delivering_now")
+    @Expose
+    private Integer isDeliveringNow;
+    @SerializedName("has_fake_reviews")
+    @Expose
+    private Integer hasFakeReviews;
+    @SerializedName("include_bogo_offers")
+    @Expose
+    private Boolean includeBogoOffers;
+    @SerializedName("deeplink")
+    @Expose
+    private String deeplink;
+    @SerializedName("is_table_reservation_supported")
+    @Expose
+    private Integer isTableReservationSupported;
+    @SerializedName("has_table_booking")
+    @Expose
+    private Integer hasTableBooking;
+    @SerializedName("events_url")
+    @Expose
+    private String eventsUrl;
+
+    public String getApikey() {
+        return apikey;
+    }
+
+    public void setApikey(String apikey) {
+        this.apikey = apikey;
+    }
 
     public String getId() {
         return id;
@@ -53,76 +131,12 @@ public class Restaurant {
         this.location = location;
     }
 
-    public String getAverage_cost_for_two() {
-        return average_cost_for_two;
+    public Integer getSwitchToOrderMenu() {
+        return switchToOrderMenu;
     }
 
-    public void setAverage_cost_for_two(String average_cost_for_two) {
-        this.average_cost_for_two = average_cost_for_two;
-    }
-
-    public String getPrice_range() {
-        return price_range;
-    }
-
-    public void setPrice_range(String price_range) {
-        this.price_range = price_range;
-    }
-
-    public String getCurrency() {
-        return currency;
-    }
-
-    public void setCurrency(String currency) {
-        this.currency = currency;
-    }
-
-    public String getThumb() {
-        return thumb;
-    }
-
-    public void setThumb(String thumb) {
-        this.thumb = thumb;
-    }
-
-    public String getMenu_url() {
-        return menu_url;
-    }
-
-    public void setMenu_url(String menu_url) {
-        this.menu_url = menu_url;
-    }
-
-    public String getHas_online_delivery() {
-        return has_online_delivery;
-    }
-
-    public void setHas_online_delivery(String has_online_delivery) {
-        this.has_online_delivery = has_online_delivery;
-    }
-
-    public String getIs_delivering_now() {
-        return is_delivering_now;
-    }
-
-    public void setIs_delivering_now(String is_delivering_now) {
-        this.is_delivering_now = is_delivering_now;
-    }
-
-    public String getHas_table_booking() {
-        return has_table_booking;
-    }
-
-    public void setHas_table_booking(String has_table_booking) {
-        this.has_table_booking = has_table_booking;
-    }
-
-    public String getDeeplink() {
-        return deeplink;
-    }
-
-    public void setDeeplink(String deeplink) {
-        this.deeplink = deeplink;
+    public void setSwitchToOrderMenu(Integer switchToOrderMenu) {
+        this.switchToOrderMenu = switchToOrderMenu;
     }
 
     public String getCuisines() {
@@ -133,27 +147,171 @@ public class Restaurant {
         this.cuisines = cuisines;
     }
 
-    public String getAll_reviews_count() {
-        return all_reviews_count;
+    public Integer getAverageCostForTwo() {
+        return averageCostForTwo;
     }
 
-    public void setAll_reviews_count(String all_reviews_count) {
-        this.all_reviews_count = all_reviews_count;
+    public void setAverageCostForTwo(Integer averageCostForTwo) {
+        this.averageCostForTwo = averageCostForTwo;
     }
 
-    public String getPhoto_count() {
-        return photo_count;
+    public Integer getPriceRange() {
+        return priceRange;
     }
 
-    public void setPhoto_count(String photo_count) {
-        this.photo_count = photo_count;
+    public void setPriceRange(Integer priceRange) {
+        this.priceRange = priceRange;
     }
 
-    public String getPhone_numbers() {
-        return phone_numbers;
+    public String getCurrency() {
+        return currency;
     }
 
-    public void setPhone_numbers(String phone_numbers) {
-        this.phone_numbers = phone_numbers;
+    public void setCurrency(String currency) {
+        this.currency = currency;
+    }
+
+    public Integer getOpentableSupport() {
+        return opentableSupport;
+    }
+
+    public void setOpentableSupport(Integer opentableSupport) {
+        this.opentableSupport = opentableSupport;
+    }
+
+    public Integer getIsZomatoBookRes() {
+        return isZomatoBookRes;
+    }
+
+    public void setIsZomatoBookRes(Integer isZomatoBookRes) {
+        this.isZomatoBookRes = isZomatoBookRes;
+    }
+
+    public String getMezzoProvider() {
+        return mezzoProvider;
+    }
+
+    public void setMezzoProvider(String mezzoProvider) {
+        this.mezzoProvider = mezzoProvider;
+    }
+
+    public Integer getIsBookFormWebView() {
+        return isBookFormWebView;
+    }
+
+    public void setIsBookFormWebView(Integer isBookFormWebView) {
+        this.isBookFormWebView = isBookFormWebView;
+    }
+
+    public String getBookFormWebViewUrl() {
+        return bookFormWebViewUrl;
+    }
+
+    public void setBookFormWebViewUrl(String bookFormWebViewUrl) {
+        this.bookFormWebViewUrl = bookFormWebViewUrl;
+    }
+
+    public String getBookAgainUrl() {
+        return bookAgainUrl;
+    }
+
+    public void setBookAgainUrl(String bookAgainUrl) {
+        this.bookAgainUrl = bookAgainUrl;
+    }
+
+    public String getThumb() {
+        return thumb;
+    }
+
+    public void setThumb(String thumb) {
+        this.thumb = thumb;
+    }
+
+    public String getPhotosUrl() {
+        return photosUrl;
+    }
+
+    public void setPhotosUrl(String photosUrl) {
+        this.photosUrl = photosUrl;
+    }
+
+    public String getMenuUrl() {
+        return menuUrl;
+    }
+
+    public void setMenuUrl(String menuUrl) {
+        this.menuUrl = menuUrl;
+    }
+
+    public String getFeaturedImage() {
+        return featuredImage;
+    }
+
+    public void setFeaturedImage(String featuredImage) {
+        this.featuredImage = featuredImage;
+    }
+
+    public Integer getHasOnlineDelivery() {
+        return hasOnlineDelivery;
+    }
+
+    public void setHasOnlineDelivery(Integer hasOnlineDelivery) {
+        this.hasOnlineDelivery = hasOnlineDelivery;
+    }
+
+    public Integer getIsDeliveringNow() {
+        return isDeliveringNow;
+    }
+
+    public void setIsDeliveringNow(Integer isDeliveringNow) {
+        this.isDeliveringNow = isDeliveringNow;
+    }
+
+    public Integer getHasFakeReviews() {
+        return hasFakeReviews;
+    }
+
+    public void setHasFakeReviews(Integer hasFakeReviews) {
+        this.hasFakeReviews = hasFakeReviews;
+    }
+
+    public Boolean getIncludeBogoOffers() {
+        return includeBogoOffers;
+    }
+
+    public void setIncludeBogoOffers(Boolean includeBogoOffers) {
+        this.includeBogoOffers = includeBogoOffers;
+    }
+
+    public String getDeeplink() {
+        return deeplink;
+    }
+
+    public void setDeeplink(String deeplink) {
+        this.deeplink = deeplink;
+    }
+
+    public Integer getIsTableReservationSupported() {
+        return isTableReservationSupported;
+    }
+
+    public void setIsTableReservationSupported(Integer isTableReservationSupported) {
+        this.isTableReservationSupported = isTableReservationSupported;
+    }
+
+    public Integer getHasTableBooking() {
+        return hasTableBooking;
+    }
+
+    public void setHasTableBooking(Integer hasTableBooking) {
+        this.hasTableBooking = hasTableBooking;
+    }
+
+    public String getEventsUrl() {
+        return eventsUrl;
+    }
+
+    public void setEventsUrl(String eventsUrl) {
+        this.eventsUrl = eventsUrl;
     }
 }
