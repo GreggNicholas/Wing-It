@@ -6,13 +6,9 @@ public class RestaurantModel {
     private String results_found;
     private String results_start;
     private String results_shown;
-<<<<<<< HEAD
-    private List<RestaurantList> restaurants;
-=======
 
     private List<RestaurantList> restaurants;
 
->>>>>>> b3669ec2cf1577b84137c131024a858c52a60a00
 
     public String getResults_found() {
         return results_found;
