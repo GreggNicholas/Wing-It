@@ -1,6 +1,7 @@
 package com.example.wing_it;
 
 
+
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
@@ -40,7 +41,7 @@ public class SplashActivity extends AppCompatActivity {
 //                .getRestaurants()
 
         ImageView imageView = findViewById(R.id.splash_gif);
-      Glide.with(this)
+        Glide.with(this)
                 .load(R.drawable.transparentchickenglitter2)
                 .placeholder(R.drawable.transparentchickenglitter2)
                 .into(imageView);
