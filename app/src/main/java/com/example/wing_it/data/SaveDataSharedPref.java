@@ -17,4 +17,6 @@ public class SaveDataSharedPref {
                 .putString(LON_KEY, Double.toString(lon))
                 .apply();
     }
+
+    public void saveRestaurantInfo(String name, String pic, String phone, String address, String rating, boolean isDeliveryAvailable, )
 }
