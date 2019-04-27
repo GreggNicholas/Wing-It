@@ -4,15 +4,15 @@ import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;
 
 public class RestaurantSingleton {
-    private Retrofit instance;
 
-    private RestaurantSingleton() {
-    }
+    private static Retrofit instance;
+    private RestaurantSingleton(){}
 
-    public Retrofit getInstance() {
-        if (instance == null) {
+    public static Retrofit getInstance(){
+        if (instance == null){
+
             instance = new Retrofit.Builder()
-                    .baseUrl("https://developers.zomato.com/api/v2.1")
+                    .baseUrl("https://developers.zomato.com/api/v2.1/")
                     .addConverterFactory(GsonConverterFactory.create())
                     .build();
         }
