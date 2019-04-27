@@ -9,8 +9,6 @@ public class RestaurantModel {
 
     private List<RestaurantList> restaurants;
 
-
-
     public String getResults_found() {
         return results_found;
     }
