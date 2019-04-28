@@ -1,13 +1,16 @@
 package com.example.wing_it;
 
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.TextView;
+import android.widget.Toast;
 import android.widget.ToggleButton;
 
 import com.example.wing_it.Fragment.MapFragment;
@@ -40,13 +43,35 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        findViews();
+
         drawerToggle = new ActionBarDrawerToggle(this, drawerlayout,R.string.open,R.string.close);
-        drawerlayout = findViewById(R.id.drawer);
+
+        drawerlayout.addDrawerListener(drawerToggle);
         drawerToggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-        navigationView = findViewById(R.id.navigation_drawer);
-        headerView = navigationView.getHeaderView(0);
-        textView.findViewById(R.id.wing_it_title_nav);
+
+        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                int id = menuItem.getItemId();
+                switch (id){
+                    case R.id.home:
+                        Toast.makeText(MainActivity.this, "Home has been clicked", Toast.LENGTH_SHORT).show();
+                        break;
+                }
+                return true;
+            }
+        });
+
+
+//
+//        navigationView = findViewById(R.id.navigation_drawer);
+//        headerView = navigationView.getHeaderView(0);
+//        textView = findViewById(R.id.wing_it_title_nav);
+
+
+
 
         RestaurantSingleton.getInstance()
                 .create(RestaurantService.class)
@@ -54,6 +79,8 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
                 .enqueue(new Callback<RestaurantModel>() {
                     @Override
                     public void onResponse(Call<RestaurantModel> call, Response<RestaurantModel> response) {
+                        restaurantList=response.body().getRestaurants();
+                        moveToMapFragment(restaurantList);
                         Log.d(TAG, "onResponse: "+response.body().getResults_shown());
                     }
                     @Override
@@ -63,8 +90,21 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
                 });
     }
 
+    private void findViews() {
+        navigationView = findViewById(R.id.navigation_drawer);
+        drawerlayout = findViewById(R.id.drawer_main);
+    }
+
     @Override
-    public void moveToMapFragment() {
+    public boolean onOptionsItemSelected(MenuItem item) {
+        if (drawerToggle.onOptionsItemSelected(item)){
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void moveToMapFragment(List<RestaurantList> restaurantList) {
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_container, MapFragment.newInstance(restaurantList))
                 .addToBackStack(null)

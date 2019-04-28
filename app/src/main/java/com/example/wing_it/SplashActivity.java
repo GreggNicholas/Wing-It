@@ -90,8 +90,8 @@ public class SplashActivity extends AppCompatActivity implements ActivityCompat.
                                 longitude = lastLocation.getLongitude();
                                 latitude = lastLocation.getLatitude();
                                 saveDataSharedPref.saveUserLatLon(latitude, longitude);
-                                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                                startActivity(intent);
+//                                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+//                                startActivity(intent);
                             }
                             else {
                                 Toast.makeText(SplashActivity.this, "No Location Shown", Toast.LENGTH_SHORT).show();

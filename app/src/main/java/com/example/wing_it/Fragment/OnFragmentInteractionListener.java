@@ -1,5 +1,9 @@
 package com.example.wing_it.Fragment;
 
+import com.example.wing_it.model.RestaurantList;
+
+import java.util.List;
+
 public interface OnFragmentInteractionListener {
-    void moveToMapFragment();
+    void moveToMapFragment(List<RestaurantList> restaurantList);
 }
