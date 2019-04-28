@@ -36,12 +36,12 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         drawerToggle = new ActionBarDrawerToggle(this, drawerlayout,R.string.open,R.string.close);
-        drawerlayout = findViewById(R.id.drawer);
+        drawerlayout = findViewById(R.id.drawer_main);
         drawerToggle.syncState();
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         navigationView = findViewById(R.id.navigation_drawer);
         headerView = navigationView.getHeaderView(0);
-        textView.findViewById(R.id.wing_it_title_nav);
+        textView = findViewById(R.id.wing_it_title_nav);
 
 
 
