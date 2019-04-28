@@ -31,8 +31,6 @@ public class MainActivity extends AppCompatActivity {
     private DrawerLayout drawerlayout;
     private ActionBarDrawerToggle drawerToggle;
     private NavigationView navigationView;
-    View headerView;
-    TextView textView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
