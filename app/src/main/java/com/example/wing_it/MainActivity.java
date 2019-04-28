@@ -64,6 +64,7 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
                 .enqueue(new Callback<RestaurantModel>() {
                     @Override
                     public void onResponse(Call<RestaurantModel> call, Response<RestaurantModel> response) {
+                        Log.d(TAG, "onResponse: " + response.body().getRestaurants().size());
                         restaurantList=response.body().getRestaurants();
                         moveToMapFragment(restaurantList);
                         Log.d(TAG, "onResponse: "+response.body().getResults_shown());
@@ -92,6 +93,11 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
 
 
 
+
+    @Override
+    public void moveToDetailedFragment(RestaurantList restaurantList) {
+
+    }
 
 }
 
