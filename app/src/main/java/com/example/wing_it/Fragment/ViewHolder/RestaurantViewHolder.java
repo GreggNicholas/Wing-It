@@ -6,11 +6,8 @@ import android.view.View;
 import android.widget.TextView;
 
 import com.example.wing_it.R;
-import com.example.wing_it.ViewHolderClick;
+import com.example.wing_it.Fragment.ViewHolderClick;
 import com.example.wing_it.model.RestaurantList;
-import com.google.android.gms.maps.CameraUpdateFactory;
-import com.google.android.gms.maps.model.CameraPosition;
-import com.google.android.gms.maps.model.LatLng;
 
 public class RestaurantViewHolder extends RecyclerView.ViewHolder {
         private TextView nameTextview;

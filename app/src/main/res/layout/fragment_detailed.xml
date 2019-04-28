@@ -7,34 +7,73 @@
 
     <TextView
         android:id="@+id/detailedfragment_restaurantname"
-        android:layout_width="462dp"
-        android:layout_height="108dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginTop="168dp"
+        android:layout_width="279dp"
+        android:layout_height="65dp"
+        android:layout_marginTop="52dp"
         android:text="@string/i_am_the_restaurant_name"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:id="@+id/detailedfragment_deliverytoggle"
+        android:layout_width="119dp"
+        android:layout_height="44dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginEnd="8dp"
+        android:contentDescription="@string/detailedfragment_deliverytoggle"
+        app:layout_constraintEnd_toEndOf="@+id/detailedfragment_restaurantpicture"
+        app:layout_constraintStart_toEndOf="@id/detailedfragment_restaurantname"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <ImageView
+        android:id="@+id/detailedfragment_restaurantpicture"
+        android:layout_width="411dp"
+        android:layout_height="312dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
         android:contentDescription="@string/restaurant_picture"
         app:layout_constraintBottom_toTopOf="@+id/detailedfragment_restaurantaddress"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/detailedfragment_restaurantname"
-        tools:layout_editor_absoluteX="160dp"
         tools:src="@tools:sample/avatars" />
 
     <TextView
+        android:id="@+id/detailedfragment_contactinfo"
+        android:layout_width="150dp"
+        android:layout_height="75dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/detailedfragment_hoursofoperation"
+        app:layout_constraintTop_toBottomOf="@id/detailedfragment_restaurantpicture" />
+
+    <TextView
+        android:id="@+id/detailedfragment_hoursofoperation"
+
+        android:layout_width="135dp"
+        android:layout_height="81dp"
+        android:layout_marginStart="4dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintBottom_toTopOf="@+id/detailedfragment_restaurantaddress"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
         android:id="@+id/detailedfragment_restaurantaddress"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="124dp"
+        android:layout_width="408dp"
+        android:layout_height="56dp"
+        android:layout_marginBottom="88dp"
         android:text="@string/hello_blank_fragment"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
+    <android.support.v7.widget.AppCompatRatingBar
+        android:id="@+id/detailedfragment_ratingbar"
+        android:layout_width="wrap_content"
+        android:layout_height="58dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/detailedfragment_restaurantaddress" />
 
 </android.support.constraint.ConstraintLayout>

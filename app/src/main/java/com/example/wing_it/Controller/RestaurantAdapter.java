@@ -5,12 +5,10 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Adapter;
 
 import com.example.wing_it.Fragment.ViewHolder.RestaurantViewHolder;
 import com.example.wing_it.R;
-import com.example.wing_it.ViewHolderClick;
-import com.example.wing_it.model.Restaurant;
+import com.example.wing_it.Fragment.ViewHolderClick;
 import com.example.wing_it.model.RestaurantList;
 
 import java.util.List;
