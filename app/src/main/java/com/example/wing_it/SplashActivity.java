@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
+import android.os.CountDownTimer;
 import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -34,6 +35,7 @@ public class SplashActivity extends AppCompatActivity implements ActivityCompat.
     private Location lastLocation;
     private SharedPreferences sharedPreferences;
     private SaveDataSharedPref saveDataSharedPref;
+    private CountDownTimer countDownTimer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,6 +43,18 @@ public class SplashActivity extends AppCompatActivity implements ActivityCompat.
         setContentView(R.layout.activity_splash);
         sharedPreferences = getSharedPreferences(SaveDataSharedPref.SHARED_PREF_KEY, MODE_PRIVATE);
         saveDataSharedPref = new SaveDataSharedPref(sharedPreferences);
+        countDownTimer = new CountDownTimer(3000, 1000) {
+            @Override
+            public void onTick(long millisUntilFinished) {
+
+            }
+
+            @Override
+            public void onFinish() {
+                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                startActivity(intent);
+            }
+        };
 
         getSupportActionBar().hide();
 
@@ -66,8 +80,7 @@ public class SplashActivity extends AppCompatActivity implements ActivityCompat.
             ActivityCompat.requestPermissions(this,
                     new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, PERMISSIONS_REQUEST_LOCATION);
         } else {
-            Intent intent = new Intent(this, MainActivity.class);
-            startActivity(intent);
+            countDownTimer.start();
         }
 
     }
@@ -90,8 +103,7 @@ public class SplashActivity extends AppCompatActivity implements ActivityCompat.
                                 longitude = lastLocation.getLongitude();
                                 latitude = lastLocation.getLatitude();
                                 saveDataSharedPref.saveUserLatLon(latitude, longitude);
-                                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-                                startActivity(intent);
+                                countDownTimer.start();
                             }
                             else {
                                 Toast.makeText(SplashActivity.this, "No Location Shown", Toast.LENGTH_SHORT).show();

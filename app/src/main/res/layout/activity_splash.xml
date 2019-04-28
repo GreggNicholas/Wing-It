@@ -26,7 +26,7 @@
      android:id="@+id/splash_title"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:fontFamily="@font/orange_juice_2_"
+      android:fontFamily="@fontgit /orange_juice_2_"
       android:text="@string/splash_title"
       android:textStyle="bold"
       android:textAlignment="center"
