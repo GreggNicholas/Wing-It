@@ -87,6 +87,19 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
                 });
     }
 
+    private void findViews() {
+        navigationView = findViewById(R.id.navigation_drawer);
+        drawerlayout = findViewById(R.id.drawer_main);
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+
+        if(drawerToggle.onOptionsItemSelected(item)) {
+            return true;
+        }
+        return super.onOptionsItemSelected(item);
+    }
 
     @Override
     public void moveToMapFragment() {
@@ -95,17 +108,8 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
                 .addToBackStack(null)
                 .commit();
 
-    private void findViews() {
-        navigationView = findViewById(R.id.navigation_drawer);
-        drawerlayout = findViewById(R.id.drawer_main);
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        if (drawerToggle.onOptionsItemSelected(item)){
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
 
     }
+
+
 }
