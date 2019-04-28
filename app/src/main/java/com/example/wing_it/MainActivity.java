@@ -14,6 +14,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 import android.widget.ToggleButton;
 
+import com.example.wing_it.Fragment.DetailedFragment;
 import com.example.wing_it.Fragment.MapFragment;
 import com.example.wing_it.Fragment.OnFragmentInteractionListener;
 import com.example.wing_it.data.SaveDataSharedPref;
@@ -178,7 +179,10 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
 
     @Override
     public void moveToDetailedFragment(RestaurantList restaurantList) {
-
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container, DetailedFragment.newInstance(restaurantList))
+                .addToBackStack(null)
+                .commit();
     }
 
 }

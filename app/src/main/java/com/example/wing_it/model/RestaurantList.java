@@ -5,7 +5,7 @@ import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
 
-public class RestaurantList {
+public class RestaurantList implements Serializable{
     @SerializedName("restaurant")
     @Expose
     private Restaurant restaurant;

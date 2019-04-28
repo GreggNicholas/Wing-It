@@ -1,6 +1,8 @@
 package com.example.wing_it.model;
 
-public class AllReview {
+import java.io.Serializable;
+
+public class AllReview implements Serializable {
     private String rating;
     private String reviewText;
     private String id;

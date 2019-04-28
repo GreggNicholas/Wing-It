@@ -11,4 +11,6 @@
     <string name="open">Open</string>
     <string name="close">Close</string>
     <string name="detailedfragment_defaultbackground">default background for detailedfragment</string>
+    <string name="phonenumber">(347) 631 - 4400</string>
+    <string name="phone_number">(212) 941-7994</string>
 </resources>

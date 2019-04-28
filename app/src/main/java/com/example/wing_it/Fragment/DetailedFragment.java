@@ -1,6 +1,8 @@
 package com.example.wing_it.Fragment;
 
 import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
@@ -15,8 +17,11 @@ import android.widget.TextView;
 import com.example.wing_it.R;
 import com.example.wing_it.model.RestaurantList;
 
+import java.io.Serializable;
+
 
 public class DetailedFragment extends Fragment {
+    private static final String TAG = "detail";
     private static final String NAME_KEY = "param1";
     private static final String PICTURE_KEY = "param2";
     private static final String ADDRESS_KEY = "param3";
@@ -44,16 +49,10 @@ public class DetailedFragment extends Fragment {
     }
 
 
-    public static DetailedFragment newInstance(String param1, String param2) {
+    public static DetailedFragment newInstance(RestaurantList restaurantList) {
         DetailedFragment fragment = new DetailedFragment();
         Bundle args = new Bundle();
-        args.putString(NAME_KEY, param1);
-        args.putString(PICTURE_KEY, param2);
-//        args.putString(ADDRESS_KEY, param3);
-//        args.putString(CONTACT_KEY, param4);
-//        args.putString(RATING_KEY, params5);
-
-
+        args.putSerializable(NAME_KEY, (Serializable) restaurantList);
         fragment.setArguments(args);
         return fragment;
     }
@@ -62,11 +61,9 @@ public class DetailedFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            restaurantName = getArguments().getString(NAME_KEY);
-            restaurantFront = getArguments().getString(PICTURE_KEY);
-            restaurantAddress = getArguments().getString(ADDRESS_KEY);
-            contactInfo = getArguments().getString(CONTACT_KEY);
-            ratingBarArgs = getArguments().getString(RATING_KEY);
+            restaurantList = (RestaurantList) getArguments().getSerializable(NAME_KEY);
+
+
         }
     }
 
@@ -77,18 +74,27 @@ public class DetailedFragment extends Fragment {
     }
 
     @Override
-    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+    public void onViewCreated(@NonNull final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         AppCompatRatingBar ratingBar;
 //        ImageView backgroundImageView = view.findViewById(R.id.detailedfragment_background);
+
         ratingBar = view.findViewById(R.id.detailedfragment_ratingbar);
         addresstextView = view.findViewById(R.id.detailedfragment_restaurantaddress);
         contactInfoTextView = view.findViewById(R.id.detailedfragment_contactinfo);
         restaurantImageView = view.findViewById(R.id.detailedfragment_restaurantpicture);
         nameTextView = view.findViewById(R.id.detailedfragment_restaurantname);
-        ratingBar.setRating(Integer.parseInt(ratingBarArgs));
-
-
+        addresstextView.setText(restaurantList.getRestaurant().getLocation().getAddress());
+        addresstextView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", getResources().getString(R.string.phone_number), null));
+                startActivity(intent);
+            }
+        });
+//        Picasso.get().load().resize(1000, 400).into(restaurantImageView);
+        nameTextView.setText(restaurantList.getRestaurant().getName());
+        ratingBar.setRating(4);
     }
 
 
