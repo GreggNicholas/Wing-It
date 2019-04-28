@@ -64,16 +64,19 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
                         Toast.makeText(MainActivity.this, "Home has been clicked", Toast.LENGTH_SHORT).show();
                         break;
 
-                        case R.id.price:
+                        case R.id.ashley:
                             Toast.makeText(MainActivity.this, "enrique", Toast.LENGTH_SHORT).show();
                             break;
 
-                    case R.id.distance:
+                    case R.id.ben:
                         Toast.makeText(MainActivity.this, "greg", Toast.LENGTH_SHORT). show();
                         break;
 
-                    case R.id.Ben:
+                    case R.id.greg:
                         Toast.makeText(MainActivity.this, "ben", Toast.LENGTH_SHORT).show();
+                        break;
+
+                    case R.id.enrique:
                         break;
                 }
                 return true;
@@ -130,6 +133,41 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
                 .addToBackStack(null)
                 .commit();
 
+
+    }
+
+    @Override
+    public void moveToEnriqueFragment() {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container, EnriqueFragment.newInstance())
+                .addToBackStack(null)
+                .commit();
+    }
+
+    @Override
+    public void moveToBenFragment() {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container, BenFragment.newInstance())
+                .addToBackStack(null)
+                .commit();
+
+    }
+
+    @Override
+    public void moveToGregFragment() {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container, GregFragment.newInstance())
+                .addToBackStack(null)
+                .commit();
+
+    }
+
+    @Override
+    public void moveToAshleyFragment() {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container, AshleyFragment.newInstance())
+                .addToBackStack(null)
+                .commit();
 
     }
 
