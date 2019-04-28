@@ -85,6 +85,11 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
                 });
     }
 
+    private void findViews() {
+        navigationView = findViewById(R.id.navigation_drawer);
+        drawerlayout = findViewById(R.id.drawer_main);
+    }
+
 
     @Override
     public void moveToMapFragment() {
@@ -92,10 +97,6 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
                 .replace(R.id.fragment_container, MapFragment.newInstance(restaurantList))
                 .addToBackStack(null)
                 .commit();
-
-    private void findViews() {
-        navigationView = findViewById(R.id.navigation_drawer);
-        drawerlayout = findViewById(R.id.drawer_main);
     }
 
     @Override
