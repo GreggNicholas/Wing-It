@@ -1,45 +1,40 @@
 package com.example.wing_it;
 
 
-
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
+import android.support.annotation.NonNull;
 import android.support.v4.app.ActivityCompat;
 import android.support.v7.app.AppCompatActivity;
 
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
 import com.example.wing_it.network.RestaurantService;
 import com.example.wing_it.network.RestaurantSingleton;
+import com.google.android.gms.location.FusedLocationProviderClient;
 
-public class SplashActivity extends AppCompatActivity {
+public class SplashActivity extends AppCompatActivity implements ActivityCompat.OnRequestPermissionsResultCallback {
+    public static final int PERMISSIONS_REQUEST_LOCATION = 99;
     private double longitude;
     private double latitude;
+    private LocationManager lm;
+    private Location location;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-            LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-            Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-             longitude = location.getLongitude();
-             latitude = location.getLatitude();
-        }
-        else {
-            Toast.makeText(this, "You need internet to use this app", Toast.LENGTH_LONG).show();
-        }
-
+        getLocation();
 
 //        RestaurantSingleton.getInstance()
 //                .create(RestaurantService.class)
@@ -51,8 +46,37 @@ public class SplashActivity extends AppCompatActivity {
                 .placeholder(R.drawable.transparentchickenglitter2)
                 .into(imageView);
 
-      getSupportActionBar().hide();
+        getSupportActionBar().hide();
 
 
+    }
+
+    public void getLocation() {
+        if (ActivityCompat.checkSelfPermission(this,
+                Manifest.permission.ACCESS_FINE_LOCATION) !=
+                PackageManager.PERMISSION_GRANTED) {
+            ActivityCompat.requestPermissions(this,
+                    new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, PERMISSIONS_REQUEST_LOCATION);
+        } else {
+            Toast.makeText(this, "There is internet connection", Toast.LENGTH_SHORT).show();
+        }
+
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+        switch (requestCode){
+            case PERMISSIONS_REQUEST_LOCATION:
+                if ((grantResults.length > 0) && grantResults[0] ==
+                    PackageManager.PERMISSION_GRANTED) {
+                // Permission was granted.
+                    Toast.makeText(this, "Permission Granted", Toast.LENGTH_SHORT).show();
+                    
+            }else {
+                    Toast.makeText(this, "Permission Not Granted", Toast.LENGTH_SHORT).show();
+                }
+                break;
+        }
     }
 }
