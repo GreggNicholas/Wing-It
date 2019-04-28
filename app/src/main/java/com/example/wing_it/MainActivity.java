@@ -116,4 +116,9 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
                 .commit();
 
     }
+
+    @Override
+    public void moveToDetailedFragment(RestaurantList restaurantList) {
+
+    }
 }

@@ -14,16 +14,13 @@
 
     <android.support.v7.widget.RecyclerView
         android:id="@+id/map_recyclerView"
-        android:layout_marginBottom="20dp"
+        android:layout_marginBottom="10dp"
         android:layout_width="match_parent"
-        android:layout_height="60dp"
+        android:layout_height="150dp"
         android:layout_gravity="center_horizontal|bottom"
         android:layout_weight="1"
         android:divider="@null"
         android:orientation="horizontal"
         app:reverseLayout="true" />
-
-
-
 
 </FrameLayout>
