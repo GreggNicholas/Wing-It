@@ -63,6 +63,9 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
                     case R.id.home:
                         Toast.makeText(MainActivity.this, "Home has been clicked", Toast.LENGTH_SHORT).show();
                         break;
+
+                        case R.id.price:
+                            Toast.makeText(MainActivity.this, "enrique", Toast.LENGTH_SHORT).sort
                 }
                 return true;
             }

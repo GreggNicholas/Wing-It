@@ -26,17 +26,18 @@
      android:id="@+id/splash_title"
       android:layout_width="match_parent"
       android:layout_height="wrap_content"
-      android:fontFamily="@fontgit /orange_juice_2_"
+      android:fontFamily="@font/orange_juice_2_"
       android:text="@string/splash_title"
       android:textStyle="bold"
       android:textAlignment="center"
       android:textSize="72sp"
+      android:shadowDx="15"
+      android:shadowRadius="5"
       android:textColor="@color/colorYellowMain"
       app:layout_constraintTop_toTopOf="parent"
       app:layout_constraintStart_toStartOf="parent"
       app:layout_constraintEnd_toEndOf="parent"
       app:layout_constraintBottom_toBottomOf="@id/splash_gif"
-      android:background="@android:drawable/dialog_holo_light_frame"
       />
 
 
