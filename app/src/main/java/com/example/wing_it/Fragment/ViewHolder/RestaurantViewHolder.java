@@ -2,6 +2,7 @@ package com.example.wing_it.Fragment.ViewHolder;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -29,6 +30,7 @@ public class RestaurantViewHolder extends RecyclerView.ViewHolder {
     public void OnBind(final RestaurantList restaurantList, final ViewHolderClick mapInterface) {
         nameTextview.setText(restaurantList.getRestaurant().getName());
         addresstextView.setText(String.format(" %s", restaurantList.getRestaurant().getLocation().getAddress()));
+
 
         moreInfo.setOnClickListener(new View.OnClickListener() {
             @Override
