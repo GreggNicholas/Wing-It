@@ -50,18 +50,9 @@
         android:layout_marginEnd="8dp"
         android:text="contact info"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toEndOf="@+id/detailedfragment_hoursofoperation"
+
         app:layout_constraintTop_toBottomOf="@id/detailedfragment_restaurantpicture" />
 
-    <TextView
-        android:id="@+id/detailedfragment_hoursofoperation"
-        android:layout_width="133dp"
-        android:layout_height="67dp"
-        android:layout_marginStart="4dp"
-        android:layout_marginBottom="8dp"
-        android:text="hours of operation"
-        app:layout_constraintBottom_toTopOf="@+id/detailedfragment_restaurantaddress"
-        app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
         android:id="@+id/detailedfragment_restaurantaddress"
@@ -85,10 +76,12 @@
         android:id="@+id/detailedfragment_background"
         android:layout_width="406dp"
         android:layout_height="494dp"
+        android:contentDescription="@string/detailedfragment_defaultbackground"
         android:src="@drawable/detailedfrag"
         app:layout_constraintBottom_toBottomOf="@id/detailedfragment_ratingbar"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+
+        app:layout_constraintHorizontal_bias="0.4"
         app:layout_constraintStart_toStartOf="parent" />
 
 
