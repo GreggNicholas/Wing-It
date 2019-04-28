@@ -1,34 +1,56 @@
 package com.example.wing_it.Fragment;
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
-import android.os.Parcelable;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.wing_it.Controller.RestaurantAdapter;
 import com.example.wing_it.R;
+import com.example.wing_it.ViewHolderClick;
+import com.example.wing_it.model.RestaurantList;
+import com.google.android.gms.maps.CameraUpdateFactory;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.MapView;
+import com.google.android.gms.maps.MapsInitializer;
+import com.google.android.gms.maps.OnMapReadyCallback;
+import com.google.android.gms.maps.UiSettings;
+import com.google.android.gms.maps.model.BitmapDescriptorFactory;
+import com.google.android.gms.maps.model.CameraPosition;
+import com.google.android.gms.maps.model.LatLng;
+import com.google.android.gms.maps.model.Marker;
+import com.google.android.gms.maps.model.MarkerOptions;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
- * {@link MapFragment.OnFragmentInteractionListener} interface
+ * {@link OnFragmentInteractionListener} interface
  * to handle interaction events.
  * Use the {@link MapFragment#newInstance} factory method to
  * create an instance of this fragment.
  */
-public class MapFragment extends Fragment {
+public class MapFragment extends Fragment implements OnMapReadyCallback, ViewHolderClick {
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
     private static final String ARG_PARAM1 = "param1";
+    private GoogleMap mGoogleMap;
+    private MapView mapView;
+    private RecyclerView recyclerView;
+    private RestaurantAdapter restaurantAdapter;
 
     // TODO: Rename and change types of parameters
-    private ArrayList<Parcelable> mParam1;
+    private List<RestaurantList> mParam1=new ArrayList<>();
 
     private OnFragmentInteractionListener mListener;
 
@@ -44,10 +66,10 @@ public class MapFragment extends Fragment {
      * @return A new instance of fragment MapFragment.
      */
     // TODO: Rename and change types and number of parameters
-    public static MapFragment newInstance(List<Object> param1) {
+    public static MapFragment newInstance(List<RestaurantList> param1) {
         MapFragment fragment = new MapFragment();
         Bundle args = new Bundle();
-       // args.putParcelableArrayList(ARG_PARAM1, param1);
+        args.putSerializable(ARG_PARAM1, (Serializable) param1);
         fragment.setArguments(args);
         return fragment;
     }
@@ -56,7 +78,7 @@ public class MapFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            mParam1 = getArguments().getParcelableArrayList(ARG_PARAM1);
+            mParam1 = (List<RestaurantList>) getArguments().getSerializable(ARG_PARAM1);
         }
     }
 
@@ -65,13 +87,6 @@ public class MapFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         return inflater.inflate(R.layout.fragment_map, container, false);
-    }
-
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
     }
 
     @Override
@@ -91,18 +106,72 @@ public class MapFragment extends Fragment {
         mListener = null;
     }
 
-    /**
-     * This interface must be implemented by activities that contain this
-     * fragment to allow an interaction in this fragment to be communicated
-     * to the activity and potentially other fragments contained in that
-     * activity.
-     * <p>
-     * See the Android Training lesson <a href=
-     * "http://developer.android.com/training/basics/fragments/communicating.html"
-     * >Communicating with Other Fragments</a> for more information.
-     */
-    public interface OnFragmentInteractionListener {
-        // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        recyclerView = view.findViewById(R.id.map_recyclerView);
+        restaurantAdapter = new RestaurantAdapter(mParam1, this);
+        recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext(), LinearLayoutManager.HORIZONTAL, false));
+        recyclerView.setAdapter(restaurantAdapter);
+
+        mapView=view.findViewById(R.id.mapView);
+        if(mapView!=null){
+            mapView.onCreate(null);
+            mapView.onResume();
+            mapView.getMapAsync(this);
+        }
+    }
+
+
+    @Override
+    public void onMapReady(GoogleMap googleMap) {
+
+        MapsInitializer.initialize(getContext());
+        mGoogleMap=googleMap;
+
+
+        UiSettings uiSettings = mGoogleMap.getUiSettings();
+        uiSettings.setMapToolbarEnabled(true);
+        uiSettings.setZoomControlsEnabled(true);
+        uiSettings.setMyLocationButtonEnabled(true);
+
+
+        googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
+        for (RestaurantList res:mParam1) {
+
+            googleMap.addMarker(new MarkerOptions().position(new LatLng(Float.valueOf(res.getRestaurant().getLocation().getLatitude()),Float.valueOf(res.getRestaurant().getLocation().getLongitude()))).title(res.getRestaurant().getName()).snippet(" "+res.getRestaurant().getCuisines()).icon(BitmapDescriptorFactory.fromResource(R.drawable.wings)));
+            CameraPosition cityLocation=CameraPosition.builder().target(new LatLng(Double.valueOf(res.getRestaurant().getLocation().getLatitude()),Double.valueOf(res.getRestaurant().getLocation().getLongitude()))).zoom(13).bearing(0).tilt(45).build();
+            googleMap.moveCamera(CameraUpdateFactory.newCameraPosition(cityLocation));
+//            recyclerView.scrollToPosition(mParam1.indexOf(res));
+
+        }
+        final Marker marker_1 = null;
+
+        mGoogleMap.setOnMarkerClickListener(new GoogleMap.OnMarkerClickListener() {
+            @Override
+            public boolean onMarkerClick(Marker marker) {
+                // TODO Auto-generated method stub
+//                if(marker.equals(marker_1)){
+                Log.d("Click", "test");
+                for (RestaurantList res:mParam1) {
+                    if (marker.getTitle().equals(res.getRestaurant().getName())){
+                        recyclerView.scrollToPosition(mParam1.indexOf(res));
+                    }
+                }
+                return false;
+            }
+        });
+
+
+
+    }
+
+
+    @Override
+    public void onItemClicked(String lat, String lon) {
+        CameraPosition cityLocation=CameraPosition.builder().target(new LatLng(Double.valueOf(lat),Double.valueOf(lon))).zoom(17).bearing(0).tilt(45).build();
+        mGoogleMap.moveCamera(CameraUpdateFactory.newCameraPosition(cityLocation));
+
     }
 }

@@ -7,7 +7,7 @@ public class RestaurantModel {
     private String results_found;
     private String results_start;
     private String results_shown;
-    private List<Restaurant> restaurants=new ArrayList<>();
+    private List<RestaurantList> restaurants;
 
     public String getResults_found() {
         return results_found;
@@ -33,12 +33,11 @@ public class RestaurantModel {
         this.results_shown = results_shown;
     }
 
-
-    public List<Restaurant> getRestaurants() {
+    public List<RestaurantList> getRestaurants() {
         return restaurants;
     }
 
-    public void setRestaurants(List<Restaurant> restaurants) {
+    public void setRestaurants(List<RestaurantList> restaurants) {
         this.restaurants = restaurants;
     }
 }
