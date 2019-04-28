@@ -1,10 +1,13 @@
 package com.example.wing_it.Fragment;
 
 import android.content.Context;
+import android.graphics.Color;
+import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.support.v4.app.Fragment;
+import android.support.v7.app.ActionBar;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.util.Log;
@@ -94,6 +97,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, ViewHol
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+
         recyclerView = view.findViewById(R.id.map_recyclerView);
         restaurantAdapter = new RestaurantAdapter(mParam1, this, mListener);
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext(), LinearLayoutManager.HORIZONTAL, false));
@@ -153,7 +157,9 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, ViewHol
 
     @Override
     public void onItemClicked(String lat, String lon) {
-        CameraPosition cityLocation = CameraPosition.builder().target(new LatLng(Double.valueOf(lat), Double.valueOf(lon))).zoom(17).bearing(0).tilt(45).build();
+
+        CameraPosition cityLocation=CameraPosition.builder().target(new LatLng(Double.valueOf(lat),Double.valueOf(lon))).zoom(15).bearing(0).tilt(45).build();
+
         mGoogleMap.moveCamera(CameraUpdateFactory.newCameraPosition(cityLocation));
 
     }
