@@ -10,6 +10,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.vansuita.materialabout.builder.AboutBuilder;
+import com.vansuita.materialabout.views.AboutView;
+
 
 public class GregFragment extends Fragment {
 
@@ -49,6 +52,13 @@ public class GregFragment extends Fragment {
 
         View v = inflater.inflate(R.layout.fragment_greg, container, false);
         return  v;
+    }
+
+    @Override
+    public void onActivityCreated(@Nullable Bundle savedInstanceState) {
+        super.onActivityCreated(savedInstanceState);
+
+
     }
 
     @Override
