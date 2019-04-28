@@ -1,5 +1,6 @@
 package com.example.wing_it.model;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class RestaurantModel {
