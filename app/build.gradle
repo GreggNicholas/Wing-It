@@ -42,6 +42,4 @@ dependencies {
     //Google Dependancy for location
     implementation 'com.google.android.gms:play-services:12.0.1'
 
-
-
 }

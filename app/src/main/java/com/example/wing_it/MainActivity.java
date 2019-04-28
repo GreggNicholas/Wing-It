@@ -1,5 +1,6 @@
 package com.example.wing_it;
 
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
@@ -38,6 +39,8 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         findViews();
+
+//        SharedPreferences sharedPreferences = getSharedPreferences()
 
         drawerToggle = new ActionBarDrawerToggle(this, drawerlayout,R.string.open,R.string.close);
 
