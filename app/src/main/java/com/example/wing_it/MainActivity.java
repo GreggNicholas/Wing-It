@@ -175,5 +175,10 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
     }
 
 
+    @Override
+    public void moveToDetailedFragment(RestaurantList restaurantList) {
+
+    }
+
 }
 
