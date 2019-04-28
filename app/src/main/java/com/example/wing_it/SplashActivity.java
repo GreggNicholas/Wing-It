@@ -4,6 +4,7 @@ package com.example.wing_it;
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.location.Location;
 import android.location.LocationManager;
@@ -18,23 +19,30 @@ import android.widget.ImageView;
 import android.widget.Toast;
 
 import com.bumptech.glide.Glide;
+import com.example.wing_it.data.SaveDataSharedPref;
 import com.example.wing_it.network.RestaurantService;
 import com.example.wing_it.network.RestaurantSingleton;
 import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.tasks.OnSuccessListener;
 
 public class SplashActivity extends AppCompatActivity implements ActivityCompat.OnRequestPermissionsResultCallback {
     public static final int PERMISSIONS_REQUEST_LOCATION = 99;
     private double longitude;
     private double latitude;
     private LocationManager lm;
-    private Location location;
+    private Location lastLocation;
+    private SharedPreferences sharedPreferences;
+    private SaveDataSharedPref saveDataSharedPref;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
+        sharedPreferences = getSharedPreferences(SaveDataSharedPref.SHARED_PREF_KEY, MODE_PRIVATE);
+        saveDataSharedPref = new SaveDataSharedPref(sharedPreferences);
 
-        getLocation();
+        getSupportActionBar().hide();
 
 //        RestaurantSingleton.getInstance()
 //                .create(RestaurantService.class)
@@ -46,7 +54,7 @@ public class SplashActivity extends AppCompatActivity implements ActivityCompat.
                 .placeholder(R.drawable.transparentchickenglitter2)
                 .into(imageView);
 
-        getSupportActionBar().hide();
+        getLocation();
 
 
     }
@@ -58,7 +66,8 @@ public class SplashActivity extends AppCompatActivity implements ActivityCompat.
             ActivityCompat.requestPermissions(this,
                     new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, PERMISSIONS_REQUEST_LOCATION);
         } else {
-            Toast.makeText(this, "There is internet connection", Toast.LENGTH_SHORT).show();
+            Intent intent = new Intent(this, MainActivity.class);
+            startActivity(intent);
         }
 
     }
@@ -72,9 +81,27 @@ public class SplashActivity extends AppCompatActivity implements ActivityCompat.
                     PackageManager.PERMISSION_GRANTED) {
                 // Permission was granted.
                     Toast.makeText(this, "Permission Granted", Toast.LENGTH_SHORT).show();
-                    
+                    final FusedLocationProviderClient fpc = LocationServices.getFusedLocationProviderClient(this);
+                    fpc.getLastLocation().addOnSuccessListener(new OnSuccessListener<Location>() {
+                        @Override
+                        public void onSuccess(Location location) {
+                            if (location != null){
+                                lastLocation = location;
+                                longitude = lastLocation.getLongitude();
+                                latitude = lastLocation.getLatitude();
+                                saveDataSharedPref.saveUserLatLon(latitude, longitude);
+                                Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+                                startActivity(intent);
+                            }
+                            else {
+                                Toast.makeText(SplashActivity.this, "No Location Shown", Toast.LENGTH_SHORT).show();
+                            }
+                        }
+                    });
             }else {
-                    Toast.makeText(this, "Permission Not Granted", Toast.LENGTH_SHORT).show();
+                    ActivityCompat.requestPermissions(this,
+                            new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, PERMISSIONS_REQUEST_LOCATION);
+                    Toast.makeText(this, "You need to have access to use this app", Toast.LENGTH_LONG).show();
                 }
                 break;
         }
