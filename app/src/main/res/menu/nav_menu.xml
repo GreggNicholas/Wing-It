@@ -1,20 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <menu xmlns:android="http://schemas.android.com/apk/res/android">
     <item android:id = "@+id/home"
-        android:title="HOME">
+        android:title="Home">
 
     </item>
 
-    <item android:id="@+id/price"
-        android:title="PRICE">
+    <item android:id="@+id/greg"
+        android:title="Greg N">
 
     </item>
-    <item android:id="@+id/rating"
-        android:title="RATING">
+    <item android:id="@+id/enrique"
+        android:title="Enrique C">
 
     </item>
-    <item android:id="@+id/distance"
-        android:title="DISTANCE">
+    <item android:id="@+id/ashley"
+        android:title="Ashley L">
+
+    </item>
+    <item android:id="@+id/ben"
+        android:title="Ben B">
 
     </item>
 
