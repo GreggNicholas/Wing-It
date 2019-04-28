@@ -26,7 +26,7 @@ public class MainActivity extends AppCompatActivity {
 
         RestaurantSingleton.getInstance()
                 .create(RestaurantService.class)
-                .getRestaurants(40.7590, 73.9845, 2000,15)
+                .getRestaurants(40.7590, -73.9845, 2000,15)
                 .enqueue(new Callback<RestaurantModel>() {
                     @Override
                     public void onResponse(Call<RestaurantModel> call, Response<RestaurantModel> response) {

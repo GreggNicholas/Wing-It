@@ -1,7 +1,6 @@
 package com.example.wing_it;
 
 
-
 import android.Manifest;
 import android.content.Context;
 import android.content.Intent;
@@ -23,23 +22,15 @@ import com.example.wing_it.network.RestaurantSingleton;
 public class SplashActivity extends AppCompatActivity {
     private double longitude;
     private double latitude;
+    private LocationManager lm;
+    private Location location;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splash);
 
-        ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 1);
-        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
-            LocationManager lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
-            Location location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
-             longitude = location.getLongitude();
-             latitude = location.getLatitude();
-        }
-        else {
-            Toast.makeText(this, "You need internet to use this app", Toast.LENGTH_LONG).show();
-        }
-
+        getLocation();
 
 //        RestaurantSingleton.getInstance()
 //                .create(RestaurantService.class)
@@ -51,8 +42,23 @@ public class SplashActivity extends AppCompatActivity {
                 .placeholder(R.drawable.transparentchickenglitter2)
                 .into(imageView);
 
-      getSupportActionBar().hide();
+        getSupportActionBar().hide();
 
 
     }
+
+    public void getLocation() {
+        ActivityCompat.requestPermissions(this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION}, 0);
+
+        if (ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this, Manifest.permission.ACCESS_COARSE_LOCATION) == PackageManager.PERMISSION_GRANTED) {
+            lm = (LocationManager) getSystemService(Context.LOCATION_SERVICE);
+            location = lm.getLastKnownLocation(LocationManager.GPS_PROVIDER);
+            longitude = location.getLongitude();
+            latitude = location.getLatitude();
+        } else {
+            lm.requestLocationUpdates();
+            Toast.makeText(this, "You need internet to use this app", Toast.LENGTH_LONG).show();
+        }
+    }
+
 }
