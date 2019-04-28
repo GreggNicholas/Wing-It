@@ -9,7 +9,8 @@
     <style name="AppTheme.Splash" parent="@style/Theme.AppCompat.NoActionBar">
         <item name="android:windowFullscreen">true</item>
         <item name="android:windowContentOverlay">@null</item>
-        <item name="colorAccent">@color/colorBlueAccent</item>
+        <item name="colorAccent">@color/colorYellowMain</item>
+        <item name="colorPrimary">@color/colorRedAccent</item>
 
     </style>
 

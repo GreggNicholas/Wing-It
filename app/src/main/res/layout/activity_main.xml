@@ -9,6 +9,7 @@
     android:layout_height="match_parent"
     android:id="@+id/drawer_main"
     tools:context=".MainActivity"
+    android:theme="@style/AppTheme.Splash"
     >
 
 
