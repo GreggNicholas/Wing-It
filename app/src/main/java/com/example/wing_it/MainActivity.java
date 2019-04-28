@@ -33,10 +33,8 @@ import retrofit2.Response;
 public class MainActivity extends AppCompatActivity implements OnFragmentInteractionListener {
 
     public static final String TAG = "FINDME";
-    private DrawerLayout drawerlayout;
-    private ActionBarDrawerToggle drawerToggle;
-    private NavigationView navigationView;
     private SharedPreferences sharedPreferences;
+
     private double lat;
     private double lon;
 
@@ -45,7 +43,8 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        findViews();
+        getSupportActionBar().hide();
+
         sharedPreferences = getSharedPreferences(SaveDataSharedPref.SHARED_PREF_KEY, MODE_PRIVATE);
         if (sharedPreferences != null) {
             lat = Double.parseDouble(sharedPreferences.getString(SaveDataSharedPref.LAT_KEY, "0"));
@@ -54,43 +53,7 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
 
 //        SharedPreferences sharedPreferences = getSharedPreferences()
 
-        drawerToggle = new ActionBarDrawerToggle(this, drawerlayout,R.string.open,R.string.close);
 
-        drawerlayout.addDrawerListener(drawerToggle);
-        drawerToggle.syncState();
-        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
-
-        navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
-                int id = menuItem.getItemId();
-                switch (id){
-                    case R.id.home:
-                        Toast.makeText(MainActivity.this, "Home has been clicked", Toast.LENGTH_SHORT).show();
-                        break;
-
-                        case R.id.ashley:
-                            Toast.makeText(MainActivity.this, "enrique", Toast.LENGTH_SHORT).show();
-                            break;
-
-                    case R.id.ben:
-                        Toast.makeText(MainActivity.this, "greg", Toast.LENGTH_SHORT). show();
-                        break;
-
-                    case R.id.greg:
-                        Toast.makeText(MainActivity.this, "ben", Toast.LENGTH_SHORT).show();
-                        break;
-
-                    case R.id.enrique:
-                        break;
-                }
-                return true;
-            }
-        });
-//
-//        navigationView = findViewById(R.id.navigation_drawer);
-//        headerView = navigationView.getHeaderView(0);
-//        textView = findViewById(R.id.wing_it_title_nav);
 
 
 
@@ -113,20 +76,8 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
                 });
     }
 
-    private void findViews() {
-        navigationView = findViewById(R.id.navigation_drawer);
-        drawerlayout = findViewById(R.id.drawer_main);
-    }
 
 
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-
-        if(drawerToggle.onOptionsItemSelected(item)) {
-            return true;
-        }
-        return super.onOptionsItemSelected(item);
-    }
 
     @Override
 
@@ -140,40 +91,7 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
 
     }
 
-    @Override
-    public void moveToEnriqueFragment() {
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragment_container, EnriqueFragment.newInstance())
-                .addToBackStack(null)
-                .commit();
-    }
 
-    @Override
-    public void moveToBenFragment() {
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragment_container, BenFragment.newInstance())
-                .addToBackStack(null)
-                .commit();
-
-    }
-
-    @Override
-    public void moveToGregFragment() {
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragment_container, GregFragment.newInstance())
-                .addToBackStack(null)
-                .commit();
-
-    }
-
-    @Override
-    public void moveToAshleyFragment() {
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragment_container, AshleyFragment.newInstance())
-                .addToBackStack(null)
-                .commit();
-
-    }
 
 
     @Override
