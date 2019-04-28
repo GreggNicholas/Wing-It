@@ -16,6 +16,7 @@ import android.widget.ToggleButton;
 
 import com.example.wing_it.Fragment.MapFragment;
 import com.example.wing_it.Fragment.OnFragmentInteractionListener;
+import com.example.wing_it.data.SaveDataSharedPref;
 import com.example.wing_it.model.Restaurant;
 import com.example.wing_it.model.RestaurantList;
 import com.example.wing_it.model.RestaurantModel;
@@ -35,17 +36,21 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
     private DrawerLayout drawerlayout;
     private ActionBarDrawerToggle drawerToggle;
     private NavigationView navigationView;
-    View headerView;
-    TextView textView;
+    private SharedPreferences sharedPreferences;
+    private double lat;
+    private double lon;
 
     private List<RestaurantList> restaurantList=new ArrayList<>();
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         findViews();
+        sharedPreferences = getSharedPreferences(SaveDataSharedPref.SHARED_PREF_KEY, MODE_PRIVATE);
+        if (sharedPreferences != null) {
+            lat = Double.parseDouble(sharedPreferences.getString(SaveDataSharedPref.LAT_KEY, "0"));
+            lon = Double.parseDouble(sharedPreferences.getString(SaveDataSharedPref.LON_KEY, "0"));
+        }
 
 //        SharedPreferences sharedPreferences = getSharedPreferences()
 
@@ -63,12 +68,25 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
                     case R.id.home:
                         Toast.makeText(MainActivity.this, "Home has been clicked", Toast.LENGTH_SHORT).show();
                         break;
+
+                        case R.id.ashley:
+                            Toast.makeText(MainActivity.this, "enrique", Toast.LENGTH_SHORT).show();
+                            break;
+
+                    case R.id.ben:
+                        Toast.makeText(MainActivity.this, "greg", Toast.LENGTH_SHORT). show();
+                        break;
+
+                    case R.id.greg:
+                        Toast.makeText(MainActivity.this, "ben", Toast.LENGTH_SHORT).show();
+                        break;
+
+                    case R.id.enrique:
+                        break;
                 }
                 return true;
             }
         });
-
-
 //
 //        navigationView = findViewById(R.id.navigation_drawer);
 //        headerView = navigationView.getHeaderView(0);
@@ -79,7 +97,7 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
 
         RestaurantSingleton.getInstance()
                 .create(RestaurantService.class)
-                .getRestaurants(40.7590, -73.9845, 2000,15)
+                .getRestaurants(lat, lon, 2000,100)
                 .enqueue(new Callback<RestaurantModel>() {
                     @Override
                     public void onResponse(Call<RestaurantModel> call, Response<RestaurantModel> response) {
@@ -94,31 +112,73 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
                 });
     }
 
-
     private void findViews() {
         navigationView = findViewById(R.id.navigation_drawer);
         drawerlayout = findViewById(R.id.drawer_main);
     }
 
+
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        if (drawerToggle.onOptionsItemSelected(item)){
+
+        if(drawerToggle.onOptionsItemSelected(item)) {
             return true;
         }
         return super.onOptionsItemSelected(item);
     }
 
     @Override
+
     public void moveToMapFragment(List<RestaurantList> restaurantList) {
+
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.fragment_container, MapFragment.newInstance(restaurantList))
+                .addToBackStack(null)
+                .commit();
+
+
+    }
+
+    @Override
+    public void moveToEnriqueFragment() {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container, EnriqueFragment.newInstance())
+                .addToBackStack(null)
+                .commit();
+    }
+
+    @Override
+    public void moveToBenFragment() {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container, BenFragment.newInstance())
                 .addToBackStack(null)
                 .commit();
 
     }
 
     @Override
+    public void moveToGregFragment() {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container, GregFragment.newInstance())
+                .addToBackStack(null)
+                .commit();
+
+    }
+
+    @Override
+    public void moveToAshleyFragment() {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container, AshleyFragment.newInstance())
+                .addToBackStack(null)
+                .commit();
+
+    }
+
+
+    @Override
     public void moveToDetailedFragment(RestaurantList restaurantList) {
 
     }
+
 }
+

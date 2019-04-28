@@ -6,5 +6,12 @@ import java.util.List;
 
 public interface OnFragmentInteractionListener {
     void moveToMapFragment(List<RestaurantList> restaurantList);
+
     void moveToDetailedFragment(RestaurantList restaurantList);
+
+    void moveToEnriqueFragment () ;
+    void moveToBenFragment ();
+    void moveToGregFragment ();
+    void moveToAshleyFragment ();
+
 }
