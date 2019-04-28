@@ -38,8 +38,9 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
     View headerView;
     TextView textView;
 
-
     private List<RestaurantList> restaurantList=new ArrayList<>();
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -52,7 +53,6 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
 
         drawerlayout.addDrawerListener(drawerToggle);
         drawerToggle.syncState();
-
         getSupportActionBar().setDisplayHomeAsUpEnabled(true);
 
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
@@ -67,10 +67,15 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
                 return true;
             }
         });
+
+
 //
 //        navigationView = findViewById(R.id.navigation_drawer);
 //        headerView = navigationView.getHeaderView(0);
 //        textView = findViewById(R.id.wing_it_title_nav);
+
+
+
 
         RestaurantSingleton.getInstance()
                 .create(RestaurantService.class)
@@ -78,6 +83,8 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
                 .enqueue(new Callback<RestaurantModel>() {
                     @Override
                     public void onResponse(Call<RestaurantModel> call, Response<RestaurantModel> response) {
+                        restaurantList=response.body().getRestaurants();
+                        moveToMapFragment(restaurantList);
                         Log.d(TAG, "onResponse: "+response.body().getResults_shown());
                     }
                     @Override
@@ -87,13 +94,6 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
                 });
     }
 
-
-    @Override
-    public void moveToMapFragment() {
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.fragment_container, MapFragment.newInstance(restaurantList))
-                .addToBackStack(null)
-                .commit();
 
     private void findViews() {
         navigationView = findViewById(R.id.navigation_drawer);
@@ -106,6 +106,14 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
             return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void moveToMapFragment(List<RestaurantList> restaurantList) {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.fragment_container, MapFragment.newInstance(restaurantList))
+                .addToBackStack(null)
+                .commit();
 
     }
 }
