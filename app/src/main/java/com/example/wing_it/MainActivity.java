@@ -66,6 +66,15 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
 
                         case R.id.price:
                             Toast.makeText(MainActivity.this, "enrique", Toast.LENGTH_SHORT).show();
+                            break;
+
+                    case R.id.distance:
+                        Toast.makeText(MainActivity.this, "greg", Toast.LENGTH_SHORT). show();
+                        break;
+
+                    case R.id.Ben:
+                        Toast.makeText(MainActivity.this, "ben", Toast.LENGTH_SHORT).show();
+                        break;
                 }
                 return true;
             }
@@ -126,4 +135,4 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
 
 
 }
-}
+
