@@ -1,5 +1,6 @@
 package com.example.wing_it;
 
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.widget.DrawerLayout;
@@ -39,11 +40,14 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
 
     private List<RestaurantList> restaurantList=new ArrayList<>();
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         findViews();
+
+//        SharedPreferences sharedPreferences = getSharedPreferences()
 
         drawerToggle = new ActionBarDrawerToggle(this, drawerlayout,R.string.open,R.string.close);
 
@@ -90,6 +94,7 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
                 });
     }
 
+
     private void findViews() {
         navigationView = findViewById(R.id.navigation_drawer);
         drawerlayout = findViewById(R.id.drawer_main);
@@ -109,5 +114,6 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
                 .replace(R.id.fragment_container, MapFragment.newInstance(restaurantList))
                 .addToBackStack(null)
                 .commit();
+
     }
 }
