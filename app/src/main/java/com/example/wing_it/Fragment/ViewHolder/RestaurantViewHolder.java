@@ -27,7 +27,7 @@ public class RestaurantViewHolder extends RecyclerView.ViewHolder {
 
     }
 
-    public void OnBind(final RestaurantList restaurantList, final ViewHolderClick mapInterface) {
+    public void OnBind(final RestaurantList restaurantList, final ViewHolderClick mapInterface, final OnFragmentInteractionListener onFragmentInteractionListener) {
         nameTextview.setText(restaurantList.getRestaurant().getName());
         addresstextView.setText(String.format(" %s", restaurantList.getRestaurant().getLocation().getAddress()));
 
@@ -35,7 +35,7 @@ public class RestaurantViewHolder extends RecyclerView.ViewHolder {
         moreInfo.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(moreInfo.getContext(), "clicking", Toast.LENGTH_SHORT).show();
+
                 onFragmentInteractionListener.moveToDetailedFragment(restaurantList);
 
             }

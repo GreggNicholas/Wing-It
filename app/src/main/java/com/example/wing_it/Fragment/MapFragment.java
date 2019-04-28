@@ -45,7 +45,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, ViewHol
     private RestaurantAdapter restaurantAdapter;
 
     // TODO: Rename and change types of parameters
-    private List<RestaurantList> mParam1=new ArrayList<>();
+    private List<RestaurantList> mParam1 = new ArrayList<>();
 
     private OnFragmentInteractionListener mListener;
 
@@ -99,12 +99,12 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, ViewHol
 
 
         recyclerView = view.findViewById(R.id.map_recyclerView);
-        restaurantAdapter = new RestaurantAdapter(mParam1, this);
+        restaurantAdapter = new RestaurantAdapter(mParam1, this, mListener);
         recyclerView.setLayoutManager(new LinearLayoutManager(view.getContext(), LinearLayoutManager.HORIZONTAL, false));
         recyclerView.setAdapter(restaurantAdapter);
 
-        mapView=view.findViewById(R.id.mapView);
-        if(mapView!=null){
+        mapView = view.findViewById(R.id.mapView);
+        if (mapView != null) {
             mapView.onCreate(null);
             mapView.onResume();
             mapView.getMapAsync(this);
@@ -116,7 +116,7 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, ViewHol
     public void onMapReady(GoogleMap googleMap) {
 
         MapsInitializer.initialize(getContext());
-        mGoogleMap=googleMap;
+        mGoogleMap = googleMap;
 
 
         UiSettings uiSettings = mGoogleMap.getUiSettings();
@@ -126,10 +126,10 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, ViewHol
 
 
         googleMap.setMapType(GoogleMap.MAP_TYPE_NORMAL);
-        for (RestaurantList res:mParam1) {
+        for (RestaurantList res : mParam1) {
 
-            googleMap.addMarker(new MarkerOptions().position(new LatLng(Float.valueOf(res.getRestaurant().getLocation().getLatitude()),Float.valueOf(res.getRestaurant().getLocation().getLongitude()))).title(res.getRestaurant().getName()).snippet(" "+res.getRestaurant().getCuisines()).icon(BitmapDescriptorFactory.fromResource(R.drawable.wings)));
-            CameraPosition cityLocation=CameraPosition.builder().target(new LatLng(Double.valueOf(res.getRestaurant().getLocation().getLatitude()),Double.valueOf(res.getRestaurant().getLocation().getLongitude()))).zoom(13).bearing(0).tilt(45).build();
+            googleMap.addMarker(new MarkerOptions().position(new LatLng(Float.valueOf(res.getRestaurant().getLocation().getLatitude()), Float.valueOf(res.getRestaurant().getLocation().getLongitude()))).title(res.getRestaurant().getName()).snippet(" " + res.getRestaurant().getCuisines()).icon(BitmapDescriptorFactory.fromResource(R.drawable.wings)));
+            CameraPosition cityLocation = CameraPosition.builder().target(new LatLng(Double.valueOf(res.getRestaurant().getLocation().getLatitude()), Double.valueOf(res.getRestaurant().getLocation().getLongitude()))).zoom(13).bearing(0).tilt(45).build();
             googleMap.moveCamera(CameraUpdateFactory.newCameraPosition(cityLocation));
 //            recyclerView.scrollToPosition(mParam1.indexOf(res));
 
@@ -142,8 +142,8 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, ViewHol
                 // TODO Auto-generated method stub
 //                if(marker.equals(marker_1)){
                 Log.d("Click", "test");
-                for (RestaurantList res:mParam1) {
-                    if (marker.getTitle().equals(res.getRestaurant().getName())){
+                for (RestaurantList res : mParam1) {
+                    if (marker.getTitle().equals(res.getRestaurant().getName())) {
                         recyclerView.scrollToPosition(mParam1.indexOf(res));
                     }
                 }
@@ -152,13 +152,14 @@ public class MapFragment extends Fragment implements OnMapReadyCallback, ViewHol
         });
 
 
-
     }
 
 
     @Override
     public void onItemClicked(String lat, String lon) {
+
         CameraPosition cityLocation=CameraPosition.builder().target(new LatLng(Double.valueOf(lat),Double.valueOf(lon))).zoom(15).bearing(0).tilt(45).build();
+
         mGoogleMap.moveCamera(CameraUpdateFactory.newCameraPosition(cityLocation));
 
     }

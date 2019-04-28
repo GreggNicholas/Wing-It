@@ -1,9 +1,10 @@
 package com.example.wing_it.model;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
-public class RestaurantModel {
+public class RestaurantModel implements Serializable {
     private String results_found;
     private String results_start;
     private String results_shown;
