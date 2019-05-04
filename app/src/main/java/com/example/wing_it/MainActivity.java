@@ -103,5 +103,25 @@ public class MainActivity extends AppCompatActivity implements OnFragmentInterac
                 .commit();
     }
 
+    @Override
+    public void moveToEnriqueFragment() {
+
+    }
+
+    @Override
+    public void moveToBenFragment() {
+
+    }
+
+    @Override
+    public void moveToGregFragment() {
+
+    }
+
+    @Override
+    public void moveToAshleyFragment() {
+
+    }
+
 }
 
