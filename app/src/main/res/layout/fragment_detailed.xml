@@ -14,7 +14,7 @@
         android:layout_marginTop="38dp"
         android:fontFamily="@font/orange_juice_2_"
         android:gravity="center"
-        android:textColor="@color/colorRedAccent"
+        android:textColor="@color/colorWhite"
         android:textSize="66sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
@@ -32,8 +32,8 @@
 
     <ImageView
         android:id="@+id/detailedfragment_restaurantpicture"
-        android:layout_width="402dp"
-        android:layout_height="276dp"
+        android:layout_width="420dp"
+        android:layout_height="349dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
@@ -58,8 +58,9 @@
         android:fontFamily="@font/orange_juice_2_"
         android:gravity="center"
         android:text="@string/phone_number"
+        android:textColor="@color/colorWhite"
 
-        android:textSize="33sp"
+        android:textSize="52sp"
         app:layout_constraintBottom_toTopOf="@+id/detailedfragment_restaurantaddress"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -71,17 +72,19 @@
         android:layout_width="408dp"
         android:layout_height="56dp"
         android:layout_marginBottom="72dp"
+        android:layout_marginEnd="22dp"
         android:fontFamily="@font/orange_juice_2_"
         android:gravity="center"
         android:text="Address"
         android:textColor="@color/colorRedMain"
-        android:textSize="28sp"
+        android:textSize="24sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
     <android.support.v7.widget.AppCompatRatingBar
         android:id="@+id/detailedfragment_ratingbar"
         android:layout_width="wrap_content"
+        android:isIndicator="true"
         android:layout_height="58dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

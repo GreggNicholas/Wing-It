@@ -95,6 +95,7 @@ public class DetailedFragment extends Fragment {
 //        Picasso.get().load().resize(1000, 400).into(restaurantImageView);
         nameTextView.setText(restaurantList.getRestaurant().getName());
         ratingBar.setRating(4);
+        ratingBar.getSolidColor();
     }
 
 
