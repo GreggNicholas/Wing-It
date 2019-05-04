@@ -80,12 +80,13 @@ public class DetailedFragment extends Fragment {
 //        ImageView backgroundImageView = view.findViewById(R.id.detailedfragment_background);
 
         ratingBar = view.findViewById(R.id.detailedfragment_ratingbar);
+        ratingBar.setRating(3);
         addresstextView = view.findViewById(R.id.detailedfragment_restaurantaddress);
         contactInfoTextView = view.findViewById(R.id.detailedfragment_contactinfo);
         restaurantImageView = view.findViewById(R.id.detailedfragment_restaurantpicture);
         nameTextView = view.findViewById(R.id.detailedfragment_restaurantname);
         addresstextView.setText(restaurantList.getRestaurant().getLocation().getAddress());
-        addresstextView.setOnClickListener(new View.OnClickListener() {
+        contactInfoTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 Intent intent = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", getResources().getString(R.string.phone_number), null));
@@ -94,8 +95,7 @@ public class DetailedFragment extends Fragment {
         });
 //        Picasso.get().load().resize(1000, 400).into(restaurantImageView);
         nameTextView.setText(restaurantList.getRestaurant().getName());
-        ratingBar.setRating(4);
-        ratingBar.getSolidColor();
+
     }
 
 
