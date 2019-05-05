@@ -9,8 +9,8 @@
     <TextView
         android:id="@+id/detailedfragment_restaurantname"
         style="@style/detailedfragment_restaurantname"
-        android:layout_width="379dp"
-        android:layout_height="162dp"
+        android:layout_width="@dimen/restaurantname_width"
+        android:layout_height="@dimen/restaurantname_height"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toStartOf="parent"
@@ -19,20 +19,21 @@
     <ImageView
         android:id="@+id/detailedfragment_restaurantpicture"
         style="@style/detailedfragment_restaurantpicture"
-        android:layout_width="393dp"
-        android:layout_height="328dp"
+        android:layout_width="@dimen/restaurantpic_width"
+        android:layout_height="@dimen/restaurantpic_height"
         android:src="@drawable/front"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.555"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/detailedfragment_restaurantname"
+        tools:ignore="ContentDescription"
         tools:src="@tools:sample/avatars" />
 
     <TextView
         android:id="@+id/detailedfragment_restaurantaddress"
         style="@style/detailedfragment_restaurantaddress"
-        android:layout_width="393dp"
-        android:layout_height="88dp"
+        android:layout_width="@dimen/restaurantaddress_width"
+        android:layout_height="@dimen/restaurantaddress_height"
         app:layout_constraintBottom_toTopOf="@+id/detailedfragment_contactinfo"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.384"
@@ -41,8 +42,8 @@
     <TextView
         android:id="@+id/detailedfragment_contactinfo"
         style="@style/detailedfragment_restaurantcontact"
-        android:layout_width="397dp"
-        android:layout_height="61dp"
+        android:layout_width="@dimen/restaurantcontact_width"
+        android:layout_height="@dimen/restaurantcontact_height"
         android:text="@string/phone_number"
         app:layout_constraintBottom_toTopOf="@+id/detailedfragment_ratingbar"
         app:layout_constraintEnd_toEndOf="parent"
@@ -51,8 +52,8 @@
 
     <android.support.v7.widget.AppCompatRatingBar
         android:id="@+id/detailedfragment_ratingbar"
+        style="@style/detailedfragment_restaurantratingbar"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        style="@style/detailedfragment_restaurantratingbar" />
+        app:layout_constraintStart_toStartOf="parent" />
 </android.support.constraint.ConstraintLayout>

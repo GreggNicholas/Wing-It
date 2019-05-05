@@ -15,8 +15,8 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.wing_it.Interface.OnFragmentInteractionListener;
-import com.example.wing_it.R;
 import com.example.wing_it.Model.RestaurantList;
+import com.example.wing_it.R;
 
 
 final public class DetailedFragment extends Fragment {
@@ -52,25 +52,29 @@ final public class DetailedFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        final String restaurantAddress = restaurantList.getRestaurant().getLocation().getAddress();
 //        ImageView backgroundImageView = view.findViewById(R.id.detailedfragment_background);
         final AppCompatRatingBar ratingBar = view.findViewById(R.id.detailedfragment_ratingbar);
-        ratingBar.setRating(3);
-        final TextView addresstextView = view.findViewById(R.id.detailedfragment_restaurantaddress);
+        ratingBar.setRating(0);
+        final TextView addressTextView = view.findViewById(R.id.detailedfragment_restaurantaddress);
         final TextView contactInfoTextView = view.findViewById(R.id.detailedfragment_contactinfo);
         final ImageView restaurantImageView = view.findViewById(R.id.detailedfragment_restaurantpicture);
         final TextView nameTextView = view.findViewById(R.id.detailedfragment_restaurantname);
-        addresstextView.setText(restaurantList.getRestaurant().getLocation().getAddress());
+        nameTextView.setText(restaurantList.getRestaurant().getName());
+        addressTextView.setText(restaurantAddress);
+        if (addressTextView.length() > 20) {
+            addressTextView.setTextSize(26);
+        }
         contactInfoTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final Intent intent = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", getResources().getString(R.string.phone_number), null));
+                final Intent intent = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel"
+                        , getResources().getString(R.string.phone_number), null));
                 startActivity(intent);
             }
         });
 //        Picasso.get().load().resize(1000, 400).into(restaurantImageView);
-        nameTextView.setText(restaurantList.getRestaurant().getName());
     }
-
 
     @Override
     public void onAttach(Context context) {
