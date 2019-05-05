@@ -1,6 +1,6 @@
-package com.example.wing_it.network;
+package com.example.wing_it.Network;
 
-import com.example.wing_it.model.RestaurantModel;
+import com.example.wing_it.Model.RestaurantModel;
 
 import retrofit2.Call;
 import retrofit2.http.GET;

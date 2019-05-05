@@ -1,7 +1,6 @@
-package com.example.wing_it.model;
+package com.example.wing_it.Model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
 import java.util.List;
 
 public class RestaurantModel implements Serializable {

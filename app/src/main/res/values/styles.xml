@@ -24,4 +24,56 @@
         <item name="android:layout_height">match_parent</item>
     </style>
 
+    <style name="detailedfragment_restaurantname">
+        <item name="android:layout_width">376dp</item>
+        <item name="android:layout_height">156dp</item>
+        <item name="android:layout_marginStart">2dp</item>
+        <item name="android:layout_marginTop">32dp</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:layout_marginEnd">8dp</item>
+        <item name="android:fontFamily">@font/orange_juice_2_</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textSize">66sp</item>
+    </style>
+
+    <style name="detailedfragment_restaurantpicture">
+        <item name="android:layout_width">385dp</item>
+        <item name="android:layout_height">323dp</item>
+        <item name="android:layout_marginTop">16dp</item>
+        <item name="android:layout_marginEnd">8dp</item>
+        <item name="android:contentDescription">@string/restaurant_picture</item>
+    </style>
+
+    <style name="detailedfragment_restaurantaddress">
+        <item name="android:layout_width">385dp</item>
+        <item name="android:layout_height">63dp</item>
+        <item name="android:paddingTop">32dp</item>\
+        <item name="android:paddingStart">6dp</item>
+        <item name="android:paddingEnd">6dp</item>
+        <item name="android:layout_marginBottom">8dp</item>
+        <item name="android:fontFamily">@font/orange_juice_2_</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/colorRedMain</item>
+        <item name="android:textSize">42sp</item>
+    </style>
+
+    <style name="detailedfragment_restaurantcontact">
+        <item name="android:layout_width">357dp</item>
+        <item name="android:layout_height">83dp</item>
+        <item name="android:paddingTop">4dp</item>
+        <item name="android:paddingStart">8dp</item>
+        <item name="android:paddingEnd">8dp</item>
+        <item name="android:fontFamily">@font/orange_juice_2_</item>
+        <item name="android:gravity">center</item>
+        <item name="android:textColor">@color/colorWhite</item>
+        <item name="android:textSize">42sp</item>
+    </style>
+
+    <style name="detailedfragment_restaurantratingbar">
+        <item name="android:layout_width">318dp</item>
+        <item name="android:layout_height">60dp</item>
+        <item name="android:isIndicator">true</item>
+    </style>
+
 </resources>

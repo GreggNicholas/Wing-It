@@ -6,11 +6,11 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.example.wing_it.Fragment.OnFragmentInteractionListener;
-import com.example.wing_it.Fragment.ViewHolder.RestaurantViewHolder;
-import com.example.wing_it.Fragment.ViewHolderClick;
+import com.example.wing_it.Interface.OnFragmentInteractionListener;
+import com.example.wing_it.ViewHolder.RestaurantViewHolder;
+import com.example.wing_it.Interface.ViewHolderClick;
 import com.example.wing_it.R;
-import com.example.wing_it.model.RestaurantList;
+import com.example.wing_it.Model.RestaurantList;
 
 import java.util.List;
 

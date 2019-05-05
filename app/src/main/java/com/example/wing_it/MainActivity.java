@@ -1,28 +1,18 @@
 package com.example.wing_it;
 
 import android.content.SharedPreferences;
-import android.support.annotation.NonNull;
-import android.support.design.widget.NavigationView;
-import android.support.v4.widget.DrawerLayout;
-import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.TextView;
-import android.widget.Toast;
-import android.widget.ToggleButton;
 
 import com.example.wing_it.Fragment.DetailedFragment;
 import com.example.wing_it.Fragment.MapFragment;
-import com.example.wing_it.Fragment.OnFragmentInteractionListener;
-import com.example.wing_it.data.SaveDataSharedPref;
-import com.example.wing_it.model.Restaurant;
-import com.example.wing_it.model.RestaurantList;
-import com.example.wing_it.model.RestaurantModel;
-import com.example.wing_it.network.RestaurantService;
-import com.example.wing_it.network.RestaurantSingleton;
+import com.example.wing_it.Interface.OnFragmentInteractionListener;
+import com.example.wing_it.Data.SaveDataSharedPref;
+import com.example.wing_it.Model.RestaurantList;
+import com.example.wing_it.Model.RestaurantModel;
+import com.example.wing_it.Network.RestaurantService;
+import com.example.wing_it.Network.RestaurantSingleton;
 
 import java.util.ArrayList;
 import java.util.List;
