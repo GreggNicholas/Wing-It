@@ -68,7 +68,8 @@ final public class DetailedFragment extends Fragment {
         contactInfoTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                final Intent intent = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", getResources().getString(R.string.phone_number), null));
+                final Intent intent = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel"
+                        , getResources().getString(R.string.phone_number), null));
                 startActivity(intent);
             }
         });

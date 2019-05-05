@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="restaurantname_width">379dp</dimen>
+    <dimen name="restaurantname_height">162dp</dimen>
+    <dimen name="restaurantpic_width">393dp</dimen>
+    <dimen name="restaurantpic_height">328dp</dimen>
+    <dimen name="restaurantaddress_width">393dp</dimen>
+    <dimen name="restaurantaddress_height">88dp</dimen>
+    <dimen name="restaurantcontact_width">397dp</dimen>
+    <dimen name="restaurantcontact_height">61dp</dimen>
+</resources>
