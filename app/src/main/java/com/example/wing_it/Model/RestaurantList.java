@@ -1,4 +1,4 @@
-package com.example.wing_it.model;
+package com.example.wing_it.Model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;

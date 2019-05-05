@@ -14,45 +14,23 @@ import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.example.wing_it.Interface.OnFragmentInteractionListener;
 import com.example.wing_it.R;
-import com.example.wing_it.model.RestaurantList;
-
-import java.io.Serializable;
+import com.example.wing_it.Model.RestaurantList;
 
 
-public class DetailedFragment extends Fragment {
-    private static final String TAG = "detail";
-    private static final String NAME_KEY = "param1";
-    private static final String PICTURE_KEY = "param2";
-    private static final String ADDRESS_KEY = "param3";
-    private static final String CONTACT_KEY = "param4";
-    private static final String RATING_KEY = "param5";
-
-    private String restaurantName;
-    private String restaurantFront;
-    private String contactInfo;
-    private String restaurantAddress;
-    private String ratingBarArgs;
-    private String deliveryToggle;
-
-    private TextView nameTextView;
-    private ImageView deliveryImageview;
-    private ImageView restaurantImageView;
-    private TextView addresstextView;
-    private TextView contactInfoTextView;
-
+final public class DetailedFragment extends Fragment {
+    private static final String RESTAURANTS_KEY = "param1";
     private RestaurantList restaurantList;
-
     private OnFragmentInteractionListener listener;
 
     public DetailedFragment() {
     }
 
-
     public static DetailedFragment newInstance(RestaurantList restaurantList) {
         DetailedFragment fragment = new DetailedFragment();
         Bundle args = new Bundle();
-        args.putSerializable(NAME_KEY, (Serializable) restaurantList);
+        args.putSerializable(RESTAURANTS_KEY, restaurantList);
         fragment.setArguments(args);
         return fragment;
     }
@@ -61,9 +39,7 @@ public class DetailedFragment extends Fragment {
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         if (getArguments() != null) {
-            restaurantList = (RestaurantList) getArguments().getSerializable(NAME_KEY);
-
-
+            restaurantList = (RestaurantList) getArguments().getSerializable(RESTAURANTS_KEY);
         }
     }
 
@@ -76,26 +52,23 @@ public class DetailedFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull final View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        AppCompatRatingBar ratingBar;
 //        ImageView backgroundImageView = view.findViewById(R.id.detailedfragment_background);
-
-        ratingBar = view.findViewById(R.id.detailedfragment_ratingbar);
+        final AppCompatRatingBar ratingBar = view.findViewById(R.id.detailedfragment_ratingbar);
         ratingBar.setRating(3);
-        addresstextView = view.findViewById(R.id.detailedfragment_restaurantaddress);
-        contactInfoTextView = view.findViewById(R.id.detailedfragment_contactinfo);
-        restaurantImageView = view.findViewById(R.id.detailedfragment_restaurantpicture);
-        nameTextView = view.findViewById(R.id.detailedfragment_restaurantname);
+        final TextView addresstextView = view.findViewById(R.id.detailedfragment_restaurantaddress);
+        final TextView contactInfoTextView = view.findViewById(R.id.detailedfragment_contactinfo);
+        final ImageView restaurantImageView = view.findViewById(R.id.detailedfragment_restaurantpicture);
+        final TextView nameTextView = view.findViewById(R.id.detailedfragment_restaurantname);
         addresstextView.setText(restaurantList.getRestaurant().getLocation().getAddress());
         contactInfoTextView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", getResources().getString(R.string.phone_number), null));
+                final Intent intent = new Intent(Intent.ACTION_DIAL, Uri.fromParts("tel", getResources().getString(R.string.phone_number), null));
                 startActivity(intent);
             }
         });
 //        Picasso.get().load().resize(1000, 400).into(restaurantImageView);
         nameTextView.setText(restaurantList.getRestaurant().getName());
-
     }
 
 
@@ -115,6 +88,4 @@ public class DetailedFragment extends Fragment {
         super.onDetach();
         listener = null;
     }
-
-
 }

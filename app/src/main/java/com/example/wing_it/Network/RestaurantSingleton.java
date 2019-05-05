@@ -1,4 +1,4 @@
-package com.example.wing_it.network;
+package com.example.wing_it.Network;
 
 import retrofit2.Retrofit;
 import retrofit2.converter.gson.GsonConverterFactory;

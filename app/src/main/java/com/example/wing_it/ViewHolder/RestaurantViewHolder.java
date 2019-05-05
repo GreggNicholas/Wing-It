@@ -1,17 +1,15 @@
-package com.example.wing_it.Fragment.ViewHolder;
+package com.example.wing_it.ViewHolder;
 
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.example.wing_it.Fragment.OnFragmentInteractionListener;
+import com.example.wing_it.Interface.OnFragmentInteractionListener;
 import com.example.wing_it.R;
-import com.example.wing_it.Fragment.ViewHolderClick;
-import com.example.wing_it.model.RestaurantList;
+import com.example.wing_it.Interface.ViewHolderClick;
+import com.example.wing_it.Model.RestaurantList;
 
 public class RestaurantViewHolder extends RecyclerView.ViewHolder {
         private TextView nameTextview;

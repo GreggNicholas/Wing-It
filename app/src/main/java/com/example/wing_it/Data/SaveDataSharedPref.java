@@ -1,4 +1,4 @@
-package com.example.wing_it.data;
+package com.example.wing_it.Data;
 
 import android.content.SharedPreferences;
 

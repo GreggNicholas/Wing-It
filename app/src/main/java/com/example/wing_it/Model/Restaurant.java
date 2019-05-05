@@ -1,10 +1,9 @@
-package com.example.wing_it.model;
+package com.example.wing_it.Model;
 
 import com.google.gson.annotations.Expose;
 import com.google.gson.annotations.SerializedName;
 
 import java.io.Serializable;
-import java.util.List;
 
 public class Restaurant implements Serializable {
     @SerializedName("all_reviews")

@@ -1,6 +1,6 @@
-package com.example.wing_it.Fragment;
+package com.example.wing_it.Interface;
 
-import com.example.wing_it.model.RestaurantList;
+import com.example.wing_it.Model.RestaurantList;
 
 import java.util.List;
 
