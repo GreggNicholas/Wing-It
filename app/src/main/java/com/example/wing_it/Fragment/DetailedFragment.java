@@ -55,7 +55,7 @@ final public class DetailedFragment extends Fragment {
         final String restaurantAddress = restaurantList.getRestaurant().getLocation().getAddress();
 //        ImageView backgroundImageView = view.findViewById(R.id.detailedfragment_background);
         final AppCompatRatingBar ratingBar = view.findViewById(R.id.detailedfragment_ratingbar);
-        ratingBar.setRating(0);
+        ratingBar.setRating(3);
         final TextView addressTextView = view.findViewById(R.id.detailedfragment_restaurantaddress);
         final TextView contactInfoTextView = view.findViewById(R.id.detailedfragment_contactinfo);
         final ImageView restaurantImageView = view.findViewById(R.id.detailedfragment_restaurantpicture);
